@@ -1,0 +1,12 @@
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\Debug\AnyCPU\resources.pri
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\Debug\AnyCPU\AppxManifest.xml
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\bld\priconfig.xml.intermediate
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\bld\layout.resfiles.intermediate
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\bld\resources.resfiles.intermediate
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\bld\pri.resfiles.intermediate
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\bld\priconfig.xml
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\bld\layout.resfiles
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\bld\resources.resfiles
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\bld\pri.resfiles
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\bld\LanguageQualifiers.txt
+c:\Users\E0066\Sample Mobile Application\hello\platforms\windows\build\windows80\bld\ProjectArchitectures.txt
