@@ -9,4 +9,15 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+  <preference name="Fullscreen" value="true" />
+  <preference name="Orientation" value="landscape" />
+  <preference name="DisallowOverscroll" value="true"/>
+  <feature name="Device">
+    <param name="android-package" value="org.apache.cordova.device.Device" />
+  </feature>
+  <platform name="android">
+    <preference name="Fullscreen" value="true" />
+  </platform>
 </widget>
+
+

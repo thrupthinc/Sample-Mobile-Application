@@ -18,7 +18,7 @@
             </div>
         </div>-->
     <div id="demo">
-        <input id="LoginButton" type="button" value="GET DATA" onclick="LoginButton_onclick()" />
+        <input id="LoginButton" type="button" value="GET DATA" onclick="soapService();"/>
     </div>
 
    <!-- <div id="divList" data-role="content">
@@ -27,35 +27,36 @@
     <div id="details">
     </div>
     <script type="text/javascript" src="cordova.js"></script>
-    <!--<script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="js/index.js"></script>
 
     <script type="text/javascript">
 
 
-        function onDeviceReady() { }
-        document.addEventListener("deviceready", onDeviceReady, false);
+        //function onDeviceReady() { }
+        //document.addEventListener("deviceready", onDeviceReady, false);
 
-        function LoginButton_onclick() {
-            $.ajax({
-                type: "POST",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                url: "http://localhost:57564/EmployeeData.asmx?op=HelloWorld",
-                data: '{}',
-                success: function (msg) {
-                    alert(msg);
-                    jsonArray = $.parseJSON(msg.d);
-                    var $ul = $('<ul id="details">');
-                    for (i = 0; i < jsonArray.length; i++) {
-                        $("#details").append('<div id="' + i + '" name="head" >' + jsonArray[i].name + '</div>');
-                    }
-                },
-                error: function (msg) {
-                    alert("Error");
-                }
-            });
+        //function LoginButton_onclick() {
+        //    $.ajax({
+        //        type: "POST",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        url: "http://localhost:57564/EmployeeData.asmx?op=HelloWorld",
+        //        data: '{}',
+        //        success: function (msg) {
+        //            alert(msg);
+        //            jsonArray = $.parseJSON(msg.d);
+        //            var $ul = $('<ul id="details">');
+        //            for (i = 0; i < jsonArray.length; i++) {
+        //                $("#details").append('<div id="' + i + '" name="head" >' + jsonArray[i].name + '</div>');
+        //            }
+        //        },
+        //        error: function (msg) {
+        //            alert("Error");
+        //        }
+        //    });
 
-        }
+        //}
+
 
     </script>
 </body>
