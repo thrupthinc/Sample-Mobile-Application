@@ -56,17 +56,17 @@ function callSoapHeader() {
     return sr;
 }
 function callback(result) {
+    alert(result);
     if (result) {
-        alert("SUCCESS ");
+        alert("SUCCESS");
     }
     else {
-        alert("Error occurred calling web service.");
+        alert("Error");
     }
 }
 function WebSvc()  {
     WebSvc.prototype.CallWebService = function (url, soapXml, callback) {
         var xmlDoc = null;
-
         if (window.XMLHttpRequest) {
             xmlDoc = new XMLHttpRequest(); 
         }
@@ -74,7 +74,7 @@ function WebSvc()  {
         {
             xmlDoc = new ActiveXObject("Microsoft.XMLHTTP");
         }
-
+        alert(xmlDoc);
         if (xmlDoc) {
             //callback for readystate when it returns
             var self = this;
@@ -109,12 +109,10 @@ function WebSvc()  {
 
 function getMessage() {
 
-    alert("helloo");
     var soap = callSoapHeader();
     var webServiceCall = new WebSvc();
-    alert("huuuuuu");
-    webServiceCall.CallWebService("EmployeeData.asmx", soap, callComplete);
-
+    webServiceCall.CallWebService("EmployeeData.asmx?op=HelloWorld", soap, callback);
+    alert("weservice call");
 }
 
 
