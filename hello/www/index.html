@@ -28,6 +28,7 @@
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
 
     <script type="text/javascript">
 
@@ -58,7 +59,9 @@
         //}
 
         $(document).ready(function () {
+            alert("hello");
             $("#LoginButton").click(function (event) {
+                alert("hello");
                 var webserUrl = "http://localhost:57564/EmployeeData.asmx?";
                 var soapRequest =
                                 '<?xml version="1.0" encoding="utf-8"?>\
