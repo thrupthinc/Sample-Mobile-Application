@@ -111,7 +111,7 @@ function getMessage() {
 
     var soap = callSoapHeader();
     var webServiceCall = new WebSvc();
-    webServiceCall.CallWebService("EmployeeData.asmx?op=HelloWorld", soap, callback);
+    alert(webServiceCall.CallWebService("EmployeeData.asmx?op=HelloWorld", soap, callback));;
     alert("weBservice call");
 }
 
