@@ -59,6 +59,7 @@
 
         $(document).ready(function () {
             $("#LoginButton").click(function (event) {
+                alert("hello");
                 var webserUrl = "http://localhost:57564/EmployeeData.asmx?";
                 var soapRequest =
                                 '<?xml version="1.0" encoding="utf-8"?>\
@@ -86,6 +87,7 @@
         function SuccessOccur(data, status, req) {
             if (status == "success")
                 alert(req.responseText);
+            alert("lllll");
         }
         function ErrorOccur(data, status, req) {
             alert(req.responseText + " " + status);
