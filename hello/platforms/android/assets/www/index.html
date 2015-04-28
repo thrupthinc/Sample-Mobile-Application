@@ -18,7 +18,7 @@
             </div>
         </div>-->
     <div id="demo">
-        <input id="LoginButton" type="button" value="GET ITEMS" onclick="callService()"/>
+        <input id="LoginButton" type="button" value="GET ITEMS" onclick="callService(); return false;"/>
     </div>
 
    <!-- <div id="divList" data-role="content">
@@ -74,7 +74,7 @@
                 $.ajax({
                     type: "POST",
                     url: webserUrl,
-                    contentType: "text/xml;charset=utf-8",
+                    contentType: "text/xml; charset=utf-8",
                     dataType: "xml",
                     data: soapRequest,
                     processData:false,
