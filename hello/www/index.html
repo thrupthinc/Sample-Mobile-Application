@@ -127,6 +127,9 @@
         function ErrorOccur(data, status, req) {
             alert(req.responseText + " " + status);
         }
+        $(document).ready(function () {
+            jQuery.support.cors = true;
+        });
     </script>
 </body>
 </html>
