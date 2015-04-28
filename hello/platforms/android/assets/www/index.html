@@ -18,7 +18,7 @@
             </div>
         </div>-->
     <div id="demo">
-        <input id="LoginButton" type="button" value="GET ITEMS"/>
+        <input id="LoginButton" type="button" value="GET ITEMS" onclick="callService()"/>
     </div>
 
    <!-- <div id="divList" data-role="content">
@@ -57,33 +57,32 @@
 
         //}
 
-        $(document).ready(function () {
-            $("#LoginButton").click(function (event) {
-                alert("hello");
-                var webserUrl = "http://localhost:57564/EmployeeData.asmx";
-                var soapRequest =
-                                '<?xml version="1.0" encoding="utf-8"?>'+
-                                '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'+
-                                 'xmlns:xsd="http://www.w3.org/2001/XMLSchema"'+
-                                 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">'+
-                                  '<soap:Body>'+
-                                '<Add xmlns="http://tempuri.org/">'+
-                                '<x>40</x>'+
-                                '<y>50</y>'+
-                                '</Add>'+
-                                '</soap:Body>'+
-                                '</soap:Envelope>';
+        var webserUrl = "http://localhost:57564/EmployeeData.asmx?op=Add";
+        var soapRequest =
+                        '<?xml version="1.0" encoding="utf-8"?>' +
+                        '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' +
+                         'xmlns:xsd="http://www.w3.org/2001/XMLSchema"' +
+                         'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+                          '<soap:Body>' +
+                        '<Add xmlns="http://tempuri.org/">' +
+                        '<x>40</x>' +
+                        '<y>50</y>' +
+                        '</Add>' +
+                        '</soap:Body>' +
+                        '</soap:Envelope>';
+        function callService(){
                 $.ajax({
                     type: "POST",
                     url: webserUrl,
-                    contentType: "text/xml",
+                    contentType: "text/xml;charset=utf-8",
                     dataType: "xml",
                     data: soapRequest,
+                    processData:false,
                     success: SuccessOccur,
                     error: ErrorOccur
                 });
-            });
-        });
+                return false;
+        }
         function SuccessOccur(data, status, req) {
             if (status == "success")
                 alert(req.responseText);
