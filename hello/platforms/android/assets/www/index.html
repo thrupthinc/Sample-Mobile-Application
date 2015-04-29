@@ -18,10 +18,12 @@
             </div>
         </div>-->
     <div id="demo">
+       <form name="Demo" action="POST" method="post">
         <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap()" />
         <div id="response">
 
         </div>
+           </form>
     </div>
 
    <!-- <div id="divList" data-role="content">
@@ -150,7 +152,7 @@
 
             // Send the POST request
             xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
-            xmlhttp.setRequestHeader("SOAPAction", "action_name");
+            xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
             xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
             xmlhttp.send(sr);
             // send request
