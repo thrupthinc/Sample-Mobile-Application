@@ -137,7 +137,7 @@
         function soap() {
 
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "http://domain_IP:port/orabpel/default/XXNotificationListRetrieval/1.0", true);
+            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
 
             var sr = '<?xml version="1.0" encoding="UTF-8"?>';
             sr += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
