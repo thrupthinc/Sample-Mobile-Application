@@ -135,9 +135,8 @@
         //    jQuery.support.cors = true;
         //});
         function soap() {
-
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", false);
 
             var sr = '<?xml version="1.0" encoding="UTF-8"?>';
             sr += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
@@ -149,9 +148,9 @@
             sr += '</soap:Body>';
             sr += '</soap:Envelope>';
 
-
             // Send the POST request
-            xmlhttp.setRequestHeader("Accept","text/xml");
+            //xmlhttp.setRequestHeader("Accept","text/xml");
+            xmlhttp.setRequestHeader("Host", "localhost");
             xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
             xmlhttp.setRequestHeader("Content-Length", "length");
             xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
@@ -160,10 +159,11 @@
             // ...
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4) {
+                    alert(xmlhttp.readyState);
                     if (xmlhttp.status == 200) {
-
                         //alert('done use firebug to see response');
                         alert('Response' + xmlhttp.responseText);
+                        alert(xmlhttp.status);
                     }
                     else {
                         alert('Error ' + xmlhttp.status);
