@@ -18,7 +18,7 @@
     <preference name="Fullscreen" value="true" />
   </platform>
   <access uri="*" subdomains="true" />
-  <access origin="*" />
+  <access origin=".*" />
   <!--<access uri="http://localhost" subdomains="true" />-->
   <!--<access uri="http://mydomain.com" subdomains="true" />-->
 </widget>
