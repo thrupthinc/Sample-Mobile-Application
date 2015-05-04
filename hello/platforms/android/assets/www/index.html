@@ -19,7 +19,7 @@
         </div>-->
     <div id="demo">
        <!--<form name="Demo" action="POST" method="post">-->
-        <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap();" />
+        <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap()" />
         <div id="response">
 
         </div>
@@ -148,6 +148,7 @@
             sr += "</soap:Envelope>";
 
             // Send the POST request
+            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
             //xmlhttp.setRequestHeader("Accept", "text/xml");
             //xmlhttp.setRequestHeader("Host", "localhost");
             xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
@@ -163,6 +164,7 @@
                         //alert('done use firebug to see response');
                         alert('Response' + xmlhttp.responseText);
                         alert(xmlhttp.status);
+                        callback();
                     }
                     else {
                         alert('Error ' + xmlhttp.status);
@@ -170,9 +172,12 @@
                 }
                 }
                 xmlhttp.onreadystatechange = handleStateChange;
-                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
-                xmlhttp.send(null);
+                xmlhttp.send();
         }
+        function callback(data) {
+            alert(data);
+        }
+
     </script>
 </body>
 </html>
