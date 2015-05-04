@@ -134,45 +134,54 @@
         //$(document).ready(function () {
         //    jQuery.support.cors = true;
         //});
-        function soap() {
-            var xmlhttp = new XMLHttpRequest();
-            
-            var sr = "<?xml version='1.0' encoding='utf-8'?>";
-            sr += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
-            sr += "<soap:Body>";
-            sr += "<Add xmlns='http://tempuri.org/'>";
-            sr += "<x>40</x>";
-            sr += "<y>50</y>";
-            sr += "</Add>";
-            sr += "</soap:Body>";
-            sr += "</soap:Envelope>";
-
-            // Send the POST request
-            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
-            //xmlhttp.setRequestHeader("Accept", "text/xml");
-            xmlhttp.setRequestHeader("Host", "localhost");
-            xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-            //xmlhttp.setRequestHeader("Content-Length", "length");
-            xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
-            // send request
-            // ...
-                var handleStateChange = function () {
-                if (xmlhttp.readyState == 4) {
-                    alert(xmlhttp.readyState);
-                    alert(xmlhttp.status);
-                    if (xmlhttp.status == 200) {
-                        //alert('done use firebug to see response');
-                        alert('Response' + xmlhttp.responseText);
-                        alert(xmlhttp.status);
-                    }
-                    else {
-                        alert('Error ' + xmlhttp.status);
-                    }
-                }
-                }
-                xmlhttp.onreadystatechange = handleStateChange;
-                xmlhttp.send(sr);
+        var returned_data;
+        var performSomeAction = function (returned_data) {
+            val = returned_data;
         }
+        function getItemService() {
+            soap(performSomeAction);
+            }
+            function soap(callback) {
+                var xmlhttp = new XMLHttpRequest();
+
+                var sr = "<?xml version='1.0' encoding='utf-8'?>";
+                sr += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+                sr += "<soap:Body>";
+                sr += "<Add xmlns='http://tempuri.org/'>";
+                sr += "<x>40</x>";
+                sr += "<y>50</y>";
+                sr += "</Add>";
+                sr += "</soap:Body>";
+                sr += "</soap:Envelope>";
+
+                // Send the POST request
+                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+                //xmlhttp.setRequestHeader("Accept", "text/xml");
+                //xmlhttp.setRequestHeader("Host", "localhost");
+                xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+                //xmlhttp.setRequestHeader("Content-Length", "length");
+                xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
+                xmlhttp.send(sr);
+                // send request
+                // ...
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4) {
+                        alert(xmlhttp.readyState);
+                        alert(xmlhttp.status);
+                        if (xmlhttp.status == 200) {
+                            //alert('done use firebug to see response');
+                            returned_data = xmlhttp.responseText;
+                            alert('Response' + xmlhttp.responseText);
+                            callback.apply(returned_data);
+                            alert(xmlhttp.status);
+                        }
+                        else {
+                            alert('Error ' + xmlhttp.status);
+                        }
+                    }
+                }
+                
+            }
     </script>
 </body>
 </html>
