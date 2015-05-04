@@ -136,7 +136,7 @@
         //});
         function soap() {
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", false);
             xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
             xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
             //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
@@ -152,12 +152,6 @@
             sr += "</Add>";
             sr += "</soap:Body>";
             sr += "</soap:Envelope>";
-            //xmlhttp.setRequestHeader("Accept", "text/xml");
-            //xmlhttp.setRequestHeader("Host", "localhost");
-            //xmlhttp.setRequestHeader("Content-Length", "length");
-            
-            // send request
-            // ...
                 var handleStateChange = function () {
                 if (xmlhttp.readyState == 4) {
                     alert(xmlhttp.readyState);
