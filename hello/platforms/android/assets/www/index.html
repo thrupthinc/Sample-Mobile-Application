@@ -136,22 +136,23 @@
         //});
         function soap() {
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
-            var sr = '<?xml version="1.0" encoding="utf-8"?>';
-            sr += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
-            sr += '<soap:Body>';
-            sr += '<Add xmlns="http://tempuri.org/">';
-            sr += '<x>40</x>';
-            sr += '<y>50</y>';
-            sr += '</Add>';
-            sr += '</soap:Body>';
-            sr += '</soap:Envelope>';
+            
+            var sr = "<?xml version='1.0' encoding='utf-8'?>";
+            sr += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+            sr += "<soap:Body>";
+            sr += "<Add xmlns='http://tempuri.org/'>";
+            sr += "<x>40</x>";
+            sr += "<y>50</y>";
+            sr += "</Add>";
+            sr += "</soap:Body>";
+            sr += "</soap:Envelope>";
 
             // Send the POST request
-            xmlhttp.setRequestHeader("Accept", "text/xml");
+            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+            //xmlhttp.setRequestHeader("Accept", "text/xml");
             xmlhttp.setRequestHeader("Host", "localhost");
             xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-            xmlhttp.setRequestHeader("Content-Length", "length");
+            //xmlhttp.setRequestHeader("Content-Length", "length");
             xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
             // send request
             // ...
