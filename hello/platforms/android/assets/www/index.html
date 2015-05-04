@@ -148,7 +148,7 @@
             sr += "</soap:Envelope>";
 
             // Send the POST request
-            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx", false);
+            xmlhttp.open("POST", "EmployeeData.asmx/Add",true);
             //xmlhttp.setRequestHeader("Accept", "text/xml");
             //xmlhttp.setRequestHeader("Host", "localhost");
             xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
@@ -165,6 +165,7 @@
                         alert('Response' + xmlhttp.responseText);
                         alert(xmlhttp.status);
                         callback();
+
                     }
                     else {
                         alert('Error ' + xmlhttp.status);
@@ -173,6 +174,8 @@
                 }
                 xmlhttp.onreadystatechange = handleStateChange;
                 xmlhttp.send();
+                var xmlResponse = xmlHTTP.responseXML;
+                alert(xmlResponse.xml);
         }
         function callback(data) {
             alert(data);
