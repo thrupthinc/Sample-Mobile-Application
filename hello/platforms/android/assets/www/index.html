@@ -136,9 +136,15 @@
         //});
         function soap() {
             var xmlhttp = new XMLHttpRequest();
-            
+            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+            xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
+            xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+            //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
             var sr = "<?xml version='1.0' encoding='utf-8'?>";
-            sr += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+            sr += "<soap:Envelope";
+            sr+="xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance";
+            sr +="xmlns:xsd='http://www.w3.org/2001/XMLSchema";
+            sr+="xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
             sr += "<soap:Body>";
             sr += "<Add xmlns='http://tempuri.org/'>";
             sr += "<x>40</x>";
@@ -146,27 +152,22 @@
             sr += "</Add>";
             sr += "</soap:Body>";
             sr += "</soap:Envelope>";
-
-            // Send the POST request
-            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add",true);
             //xmlhttp.setRequestHeader("Accept", "text/xml");
             //xmlhttp.setRequestHeader("Host", "localhost");
-            xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
-            xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-            xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
             //xmlhttp.setRequestHeader("Content-Length", "length");
             
             // send request
             // ...
                 var handleStateChange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        alert(xmlhttp.readyState);
-                        alert(xmlhttp.status);
-                   
+                if (xmlhttp.readyState == 4) {
+                    alert(xmlhttp.readyState);
+                    alert(xmlhttp.status);
+                    if (xmlhttp.status == 200) {
                         //alert('done use firebug to see response');
                         alert('Response' + xmlhttp.responseText);
                         alert(xmlhttp.status);
                         callback();
+
                     }
                     else {
                         alert('Error ' + xmlhttp.status);
@@ -174,9 +175,10 @@
                 }
                 }
                 xmlhttp.onreadystatechange = handleStateChange;
-                xmlhttp.send();
+                xmlhttp.send(sr);
                 var xmlResponse = xmlHTTP.responseXML;
                 alert(xmlResponse.xml);
+        }
         function callback(data) {
             alert(data);
         }
