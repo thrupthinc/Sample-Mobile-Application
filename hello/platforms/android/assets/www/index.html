@@ -148,8 +148,8 @@
             sr += "</soap:Envelope>";
 
             // Send the POST request
-            xmlhttp.open("POST", "EmployeeData.asmx/Add",true);
-            //xmlhttp.setRequestHeader("Accept", "text/xml");
+            xmlhttp.open("POST", "~/App_Code/EmployeeData.asmx/Add", false);
+            xmlhttp.setRequestHeader("Accept", "text/xml");
             //xmlhttp.setRequestHeader("Host", "localhost");
             xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
             //xmlhttp.setRequestHeader("Content-Length", "length");
