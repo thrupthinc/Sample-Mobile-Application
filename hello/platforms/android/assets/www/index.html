@@ -153,7 +153,6 @@
             xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
             xmlhttp.setRequestHeader("Content-Length", "length");
             xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
-            xmlhttp.send(sr);
             // send request
             // ...
                 var handleStateChange = function () {
@@ -171,7 +170,7 @@
                 }
                 }
                 xmlhttp.onreadystatechange = handleStateChange;
-           
+                xmlhttp.send(sr);
         }
     </script>
 </body>
