@@ -19,7 +19,7 @@
         </div>-->
     <div id="demo">
        <form name="Demo" action="POST" method="post">
-        <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap(); return false;" />
+        <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap(); " />
         <div id="response">
 
         </div>
@@ -154,7 +154,6 @@
             xmlhttp.setRequestHeader("Content-Type","text/xml; charset=utf-8");
             xmlhttp.setRequestHeader("Content-Length","length");
             xmlhttp.setRequestHeader("SOAPAction","http://tempuri.org/Add");
-            xmlhttp.send(sr);
             // send request
             // ...
             xmlhttp.onreadystatechange = function () {
@@ -171,7 +170,7 @@
                     }
                 }
             }
-
+            xmlhttp.send(sr);
         }
     </script>
 </body>
