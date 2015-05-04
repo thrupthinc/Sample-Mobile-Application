@@ -150,16 +150,17 @@
 
             // Send the POST request
             xmlhttp.setRequestHeader("Accept","text/xml");
-            xmlhttp.setRequestHeader("Host", "localhost");
-            xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-            xmlhttp.setRequestHeader("Content-Length", "200");
-            xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
+            xmlhttp.setRequestHeader("Host","localhost");
+            xmlhttp.setRequestHeader("Content-Type","text/xml; charset=utf-8");
+            xmlhttp.setRequestHeader("Content-Length","length");
+            xmlhttp.setRequestHeader("SOAPAction","http://tempuri.org/Add");
             xmlhttp.send(sr);
             // send request
             // ...
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4) {
                     alert(xmlhttp.readyState);
+                    alert(xmlhttp.status);
                     if (xmlhttp.status == 200) {
                         //alert('done use firebug to see response');
                         alert('Response' + xmlhttp.responseText);
