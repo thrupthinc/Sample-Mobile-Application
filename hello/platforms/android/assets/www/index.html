@@ -18,12 +18,13 @@
             </div>
         </div>-->
     <div id="demo">
-       <!--<form name="Demo" action="POST" method="post">-->
-        <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap()" />
+       <form name="Demo" action="POST" method="post">
+        <input id="LoginButton" type="button" value="GET ITEMS"/>
+           </form>
         <div id="response">
-
+           
         </div>
-          <!-- </form>-->
+
     </div>
 
    <!-- <div id="divList" data-role="content">
@@ -64,6 +65,7 @@
 
         $(document).ready(function () {
             $("#LoginButton").click(function (event) {
+                event.preventDefault();
                 alert("hello");
                 var webserUrl = "http://localhost:57564/EmployeeData.asmx?op=Add";
                 var sr = "<?xml version='1.0' encoding='utf-8'?>";
@@ -83,7 +85,7 @@
                     url: webserUrl,
                     contentType: "text/xml",
                     dataType: "xml",
-                    data: { 'x': "" + 50 + "", 'y': "" + 70 + ""},
+                    data: sr,
                     success: SuccessOccur,
                     error: ErrorOccur
                 });
@@ -96,6 +98,11 @@
         function ErrorOccur(data, status, req) {
             alert(req.responseText + " " + status);
         }
+        $(document).ajaxError(function (e, jqxhr, settings, exception) {
+            if (jqxhr.readyState == 0 || jqxhr.status == 0) {
+                return; //Skip this error
+            }
+        });
         //var webserUrl = "http://localhost:57564/EmployeeData.asmx?op=Add";
         //var sr = '<?xml version="1.0" encoding="utf-8"?>';
         //    sr += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
