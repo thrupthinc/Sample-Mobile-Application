@@ -84,23 +84,27 @@
                     contentType: "text/xml",
                     dataType: "xml",
                     data: sr,
-                    success: SuccessOccur,
-                    error: ErrorOccur
+                    success: function (data, status, req) {
+                        if (status == "success")
+                            alert(req.responseText);
+                    },
+                    error: function (data, status, req) {
+                        alert(req.responseText + " " + status);
+                    }
                 });
             });
         });
-        function SuccessOccur(data, status, req) {
-            if (status == "success")
-                alert(req.responseText);
-        }
-        function ErrorOccur(data, status, req) {
-            alert(req.responseText + " " + status);
-        }
-        $(document).ajaxError(function (e, jqxhr, settings, exception) {
-            if (jqxhr.readyState == 0 || jqxhr.status == 0) {
-                return; //Skip this error
-            }
-        });
+        //function SuccessOccur(data, status, req) {
+        //    if (status == "success")
+        //        alert(req.responseText);
+        //}
+        //function ErrorOccur(data, status, req) {
+        //    alert(req.responseText + " " + status);
+        //}
+        //$(document).ajaxError(function (e, jqxhr, settings, exception) {
+        //    if (jqxhr.readyState == 0 || jqxhr.status == 0) {
+        //        return; //Skip this error
+        //    }
         //var webserUrl = "http://localhost:57564/EmployeeData.asmx?op=Add";
         //var sr = '<?xml version="1.0" encoding="utf-8"?>';
         //    sr += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
