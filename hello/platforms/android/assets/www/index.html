@@ -136,6 +136,7 @@
         //});
         function soap() {
             var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
             alert("post");
             xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
             alert("soapAction");
@@ -160,7 +161,7 @@
                         alert(sr);
                     alert(xmlhttp.readyState);
                     alert(xmlhttp.status);
-                    if (xmlhttp.status.toString == "200") {
+                    if (xmlhttp.status.toString() == "200") {
                         //alert('done use firebug to see response');
                         alert('Response' + xmlhttp.responseText);
                         alert(xmlhttp.status);
@@ -172,7 +173,6 @@
                     }
                 }
                 }
-                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
                 xmlhttp.onreadystatechange = handleStateChange;
                 xmlhttp.send(sr);
                 var xmlResponse = xmlHTTP.responseXML;
