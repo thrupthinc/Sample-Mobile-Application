@@ -66,24 +66,24 @@
             $("#LoginButton").click(function (event) {
                 alert("hello");
                 var webserUrl = "http://localhost:57564/EmployeeData.asmx";
-                var soapRequest =
-                                '<?xml version="1.0" encoding="utf-8"?>'+
-                                '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'+
-                                 'xmlns:xsd="http://www.w3.org/2001/XMLSchema"' +
-                                 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">'+
-                                  '<soap:Body>'+
-                                '<Add xmlns="http://tempuri.org/">'+
-                                '<x>40</x>'+
-                                '<y>50</y>'+
-                                '</Add>'+
-                                '</soap:Body>'+
-                                '</soap:Envelope>';
+                var sr = "<?xml version='1.0' encoding='utf-8'?>";
+                    sr += "<soap:Envelope";
+                    sr+="xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance";
+                    sr +="xmlns:xsd='http://www.w3.org/2001/XMLSchema";
+                    sr+="xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+                    sr += "<soap:Body>";
+                    sr += "<Add xmlns='http://tempuri.org/'>";
+                    sr += "<x>40</x>";
+                    sr += "<y>50</y>";
+                    sr += "</Add>";
+                    sr += "</soap:Body>";
+                    sr += "</soap:Envelope>";
                 $.ajax({
                     type: "POST",
                     url: webserUrl,
                     contentType: "text/xml",
                     dataType: "xml",
-                    data: soapRequest,
+                    data: sr,
                     success: SuccessOccur,
                     error: ErrorOccur
                 });
