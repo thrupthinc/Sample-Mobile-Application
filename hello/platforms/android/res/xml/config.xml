@@ -14,7 +14,6 @@
     <preference name="Orientation" value="landscape" />
     <preference name="DisallowOverscroll" value="true" />
     <access uri="*" subdomains="true" />
-  <access origin=".*" />
   <feature name="Device">
     <param name="android-package" value="org.apache.cordova.device.Device" />
   </feature>

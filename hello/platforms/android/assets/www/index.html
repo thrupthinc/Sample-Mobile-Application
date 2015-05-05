@@ -78,10 +78,10 @@
                     sr += "</Add>";
                     sr += "</soap:Body>";
                     sr += "</soap:Envelope>";
-                $.ajax({
+                    $.ajax({
                     type: "POST",
                     url: webserUrl,
-                    contentType: "text/xml",
+                    contentType: "text/xml; charset=utf-8",
                     dataType: "xml",
                     data: sr,
                     success: function (data, status, req) {
