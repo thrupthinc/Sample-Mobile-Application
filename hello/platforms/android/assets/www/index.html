@@ -156,7 +156,8 @@
             sr += "</soap:Body>";
             sr += "</soap:Envelope>";
                 var handleStateChange = function () {
-                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.readyState == 4) {
+                        alert(sr);
                     alert(xmlhttp.readyState);
                     alert(xmlhttp.status);
                     if (xmlhttp.status == 200) {
