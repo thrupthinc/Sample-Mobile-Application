@@ -18,7 +18,7 @@
             </div>
         </div>-->
     <div id="demo">
-        <input id="LoginButton" type="button" value="GET ITEMS"/>
+        <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap();"/>
         <div id="response">
            
         </div>
@@ -61,39 +61,39 @@
 
         //}
 
-        $(document).ready(function () {
-            $("#LoginButton").click(function (event) {
-                alert("hello");
-                var webserUrl = "http://localhost:57564/EmployeeData.asmx?op=Add";
-                alert(webserUrl);
-                var sr = "<?xml version='1.0' encoding='utf-8'?>";
-                    sr += "<soap:Envelope";
-                    sr +=" xmlns:xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
-                    sr +=" xmlns:xsd='http://www.w3.org/2001/XMLSchema'";
-                    sr +=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
-                    sr += "<soap:Body>";
-                    sr += "<Add xmlns='http://tempuri.org/'>";
-                    sr += "<x>40</x>";
-                    sr += "<y>50</y>";
-                    sr += "</Add>";
-                    sr += "</soap:Body>";
-                    sr += "</soap:Envelope>";
-                    $.ajax({
-                    type: "POST",
-                    url: webserUrl,
-                    contentType: "text/xml; charset=utf-8",
-                    dataType: "xml",
-                    data: sr,
-                    success: function (data, status, req) {
-                        if (status == "success")
-                            alert(req.responseText);
-                    },
-                    error: function (data, status, req) {
-                        alert(req.responseText + " " + status);
-                    }
-                });
-            });
-        });
+        //$(document).ready(function () {
+        //    $("#LoginButton").click(function (event) {
+        //        alert("hello");
+        //        var webserUrl = "http://localhost:57564/EmployeeData.asmx?op=Add";
+        //        alert(webserUrl);
+        //        var sr = "<?xml version='1.0' encoding='utf-8'?>";
+        //            sr += "<soap:Envelope";
+        //            sr +=" xmlns:xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
+        //            sr +=" xmlns:xsd='http://www.w3.org/2001/XMLSchema'";
+        //            sr +=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+        //            sr += "<soap:Body>";
+        //            sr += "<Add xmlns='http://tempuri.org/'>";
+        //            sr += "<x>40</x>";
+        //            sr += "<y>50</y>";
+        //            sr += "</Add>";
+        //            sr += "</soap:Body>";
+        //            sr += "</soap:Envelope>";
+        //            $.ajax({
+        //            type: "POST",
+        //            url: webserUrl,
+        //            contentType: "text/xml; charset=utf-8",
+        //            dataType: "xml",
+        //            data: sr,
+        //            success: function (data, status, req) {
+        //                if (status == "success")
+        //                    alert(req.responseText);
+        //            },
+        //            error: function (data, status, req) {
+        //                alert(req.responseText + " " + status);
+        //            }
+        //        });
+        //    });
+        //});
         //function SuccessOccur(data, status, req) {
         //    if (status == "success")
         //        alert(req.responseText);
@@ -143,53 +143,53 @@
         //$(document).ready(function () {
         //    jQuery.support.cors = true;
         //});
-        //function soap() {
-        //    var xmlhttp = new XMLHttpRequest();
-        //    alert("post");
-        //    //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-        //    var sr = "<?xml version='1.0' encoding='utf-8'?>";
-        //    sr += "<soap:Envelope";
-        //    sr +=" xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
-        //    sr +=" xmlns:xsd='http://www.w3.org/2001/XMLSchema'";
-        //    sr +=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
-        //    sr += "<soap:Body>";
-        //    sr += "<Add xmlns='http://tempuri.org/'>";
-        //    sr += "<x>40</x>";
-        //    sr += "<y>50</y>";
-        //    sr += "</Add>";
-        //    sr += "</soap:Body>";
-        //    sr += "</soap:Envelope>";
-        //        var handleStateChange = function () {
+        function soap() {
+            var xmlhttp = new XMLHttpRequest();
+            alert("post");
+            //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            var sr = "<?xml version='1.0' encoding='utf-8'?>";
+            sr += "<soap:Envelope";
+            sr +=" xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
+            sr +=" xmlns:xsd='http://www.w3.org/2001/XMLSchema'";
+            sr +=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+            sr += "<soap:Body>";
+            sr += "<Add xmlns='http://tempuri.org/'>";
+            sr += "<x>40</x>";
+            sr += "<y>50</y>";
+            sr += "</Add>";
+            sr += "</soap:Body>";
+            sr += "</soap:Envelope>";
+                var handleStateChange = function () {
 
-        //            if (xmlhttp.readyState == 4) {
-        //                alert(sr);
-        //            alert(xmlhttp.readyState);
-        //            alert(xmlhttp.status);
-        //            if (xmlhttp.status == 200) {
-        //                //alert('done use firebug to see response');
-        //                alert('Response' + xmlhttp.responseText);
-        //                alert(xmlhttp.status);
-        //                callback(xmlhttp.responseText);
-        //            }
-        //            else {
-        //                alert('Error ' + xmlhttp.status);
-        //                callback(xmlhttp.statusText);
-        //            }
-        //        }
-        //        }
-        //        xmlhttp.onreadystatechange = handleStateChange;
-        //        xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
-        //        xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
-        //        alert("soapAction");
-        //        xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-        //        alert("text/xml");
-        //        xmlhttp.send(sr);
-        //        var xmlResponse = xmlHTTP.responseXML;
-        //        alert(xmlResponse.xml);
-        //}
-        //function callback(data) {
-        //    alert(data);
-        //}
+                    if (xmlhttp.readyState == 4) {
+                        alert(sr);
+                    alert(xmlhttp.readyState);
+                    alert(xmlhttp.status);
+                    if (xmlhttp.status == 200) {
+                        //alert('done use firebug to see response');
+                        alert('Response' + xmlhttp.responseText);
+                        alert(xmlhttp.status);
+                        callback(xmlhttp.responseText);
+                    }
+                    else {
+                        alert('Error ' + xmlhttp.status);
+                        callback(xmlhttp.statusText);
+                    }
+                }
+                }
+                xmlhttp.onreadystatechange = handleStateChange;
+                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+                xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
+                alert("soapAction");
+                xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+                alert("text/xml");
+                xmlhttp.send(sr);
+                var xmlResponse = xmlHTTP.responseXML;
+                alert(xmlResponse.xml);
+        }
+        function callback(data) {
+            alert(data);
+        }
 
     </script>
 </body>
