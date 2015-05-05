@@ -150,8 +150,8 @@
             sr+=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
             sr += "<soap:Body>";
             sr += "<Add xmlns='http://tempuri.org/'>";
-            sr += "<x>" + 40 +"</x>";
-            sr += "<y>"+ 50 +"</y>";
+            sr += "<x>40</x>";
+            sr += "<y>50</y>";
             sr += "</Add>";
             sr += "</soap:Body>";
             sr += "</soap:Envelope>";
@@ -161,7 +161,7 @@
                         alert(sr);
                     alert(xmlhttp.readyState);
                     alert(xmlhttp.status);
-                    if (xmlhttp.status.toString() == "200") {
+                    if (xmlhttp.status.toString() == "0") {
                         //alert('done use firebug to see response');
                         alert('Response' + xmlhttp.responseText);
                         alert(xmlhttp.status);
