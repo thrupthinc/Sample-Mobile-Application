@@ -136,18 +136,13 @@
         //});
         function soap() {
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
             alert("post");
-            xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
-            alert("soapAction");
-            xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-            alert("text/xml");
             //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
             var sr = "<?xml version='1.0' encoding='utf-8'?>";
             sr += "<soap:Envelope";
-            sr+=" xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
+            sr +=" xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
             sr +=" xmlns:xsd='http://www.w3.org/2001/XMLSchema'";
-            sr+=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+            sr +=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
             sr += "<soap:Body>";
             sr += "<Add xmlns='http://tempuri.org/'>";
             sr += "<x>40</x>";
@@ -161,19 +156,24 @@
                         alert(sr);
                     alert(xmlhttp.readyState);
                     alert(xmlhttp.status);
-                    if (xmlhttp.status.toString() == "0") {
+                    if (xmlhttp.status == 200) {
                         //alert('done use firebug to see response');
                         alert('Response' + xmlhttp.responseText);
                         alert(xmlhttp.status);
                         callback(xmlhttp.responseText);
-
                     }
                     else {
                         alert('Error ' + xmlhttp.status);
+                        callback(xmlhttp.statusText);
                     }
                 }
                 }
                 xmlhttp.onreadystatechange = handleStateChange;
+                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+                xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
+                alert("soapAction");
+                xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+                alert("text/xml");
                 xmlhttp.send(sr);
                 var xmlResponse = xmlHTTP.responseXML;
                 alert(xmlResponse.xml);
