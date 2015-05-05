@@ -154,13 +154,14 @@
             sr += "</Add>";
             sr += "</soap:Body>";
             sr += "</soap:Envelope>";
-            //var handleStateChange = function () {
+
+            xmlhttp.onreadystatechange = function () {
 
             if (xmlhttp.readyState == 4) {
                 alert(sr);
                 alert(xmlhttp.readyState);
                 alert(xmlhttp.status);
-                if (xmlhttp.status == 200) {
+                if (xmlhttp.readyState == 200) {
                     //alert('done use firebug to see response');
                     alert('Response' + xmlhttp.responseText);
                     alert(xmlhttp.status);
@@ -171,8 +172,8 @@
                     alert('Error ' + xmlhttp.status);
                 }
             }
-            //}
-            //xmlhttp.onreadystatechange = handleStateChange;
+            }
+            // = handleStateChange;
             xmlhttp.send(sr);
             var xmlResponse = xmlHTTP.responseXML;
             alert(xmlResponse.xml);
