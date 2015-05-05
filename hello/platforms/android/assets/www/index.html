@@ -18,14 +18,15 @@
             </div>
         </div>-->
     <div id="demo">
-        <!--<form name="Demo" action="POST" method="post">-->
+       <!--<form name="Demo" action="POST" method="post">-->
         <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap()" />
         <div id="response">
+
         </div>
-        <!-- </form>-->
+          <!-- </form>-->
     </div>
 
-    <!-- <div id="divList" data-role="content">
+   <!-- <div id="divList" data-role="content">
         <ul id="details" data-role="listview" data-inset="true"></ul>
     </div>-->
     <div id="details">
@@ -135,7 +136,6 @@
         //});
         function soap() {
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
             alert("post");
             xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
             alert("soapAction");
@@ -144,39 +144,39 @@
             //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
             var sr = "<?xml version='1.0' encoding='utf-8'?>";
             sr += "<soap:Envelope";
-            sr += " xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
-            sr += " xmlns:xsd='http://www.w3.org/2001/XMLSchema'";
-            sr += " xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+            sr+=" xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
+            sr +=" xmlns:xsd='http://www.w3.org/2001/XMLSchema'";
+            sr+=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
             sr += "<soap:Body>";
             sr += "<Add xmlns='http://tempuri.org/'>";
-            sr += "<x>" + 40 + "</x>";
-            sr += "<y>" + 50 + "</y>";
+            sr += "<x>" + 40 +"</x>";
+            sr += "<y>"+ 50 +"</y>";
             sr += "</Add>";
             sr += "</soap:Body>";
             sr += "</soap:Envelope>";
+                var handleStateChange = function () {
 
-            xmlhttp.onreadystatechange = function () {
-
-            if (xmlhttp.readyState == 4) {
-                alert(sr);
-                alert(xmlhttp.readyState);
-                alert(xmlhttp.status);
-                if (xmlhttp.readyState == 200) {
-                    //alert('done use firebug to see response');
-                    alert('Response' + xmlhttp.responseText);
+                    if (xmlhttp.readyState == 4) {
+                        alert(sr);
+                    alert(xmlhttp.readyState);
                     alert(xmlhttp.status);
-                    callback();
+                    if (xmlhttp.status.toString == "200") {
+                        //alert('done use firebug to see response');
+                        alert('Response' + xmlhttp.responseText);
+                        alert(xmlhttp.status);
+                        callback();
 
+                    }
+                    else {
+                        alert('Error ' + xmlhttp.status);
+                    }
                 }
-                else {
-                    alert('Error ' + xmlhttp.status);
                 }
-            }
-            }
-            // = handleStateChange;
-            xmlhttp.send(sr);
-            var xmlResponse = xmlHTTP.responseXML;
-            alert(xmlResponse.xml);
+                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+                xmlhttp.onreadystatechange = handleStateChange;
+                xmlhttp.send(sr);
+                var xmlResponse = xmlHTTP.responseXML;
+                alert(xmlResponse.xml);
         }
         function callback(data) {
             alert(data);
