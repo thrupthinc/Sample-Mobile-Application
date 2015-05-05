@@ -162,19 +162,16 @@
                 var handleStateChange = function () {
 
                     if (xmlhttp.readyState == 4) {
-                        alert(sr);
-                    alert(xmlhttp.readyState);
-                    alert(xmlhttp.status);
-                    if (xmlhttp.status == 200) {
+                    //if (xmlhttp.status == 200) {
                         //alert('done use firebug to see response');
                         alert('Response' + xmlhttp.responseText);
                         alert(xmlhttp.status);
                         callback(xmlhttp.responseText);
-                    }
-                    else {
-                        alert('Error ' + xmlhttp.status);
-                        callback(xmlhttp.statusText);
-                    }
+                    //}
+                    //else {
+                    //    alert('Error ' + xmlhttp.status);
+                    //    callback(xmlhttp.statusText);
+                    //}
                 }
                 }
                 xmlhttp.onreadystatechange = handleStateChange;
