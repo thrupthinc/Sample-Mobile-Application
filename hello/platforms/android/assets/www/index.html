@@ -18,7 +18,7 @@
             </div>
         </div>-->
     <div id="demo"> 
-        <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap(); return false"/>
+        <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap(); "/>
 
         <div id="response">
            
@@ -157,10 +157,10 @@
             var xmldoc = new ActiveXObject("Microsoft.XMLDOM");
             xmldoc.loadXML(xmlToSend);
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            xmlhttp.onreadystatechange = state_Change;
             xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add",true);
             xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/HelloWorld");
             xmlhttp.setRequestHeader("Content-Type", "text/xml");
+            xmlhttp.onreadystatechange = state_Change;
             xmlhttp.send(xmldoc);
 
             alert(xmlhttp.responseXML.xml);
