@@ -154,14 +154,14 @@
             xmlToSend += "xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
             xmlToSend += "<soap:Body><HelloWorld xmlns='http://tempuri.org/' />";
             xmlToSend += "</soap:Body></soap:Envelope>";
-            var xmldoc = new ActiveXObject("Microsoft.XMLDOM");
-            xmldoc.loadXML(xmlToSend);
+            //var xmldoc = new ActiveXObject("Microsoft.XMLDOM");
+            //xmldoc.loadXML(xmlToSend);
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add",true);
             xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/HelloWorld");
             xmlhttp.setRequestHeader("Content-Type", "text/xml");
             xmlhttp.onreadystatechange = state_Change;
-            xmlhttp.send(xmldoc);
+            xmlhttp.send(xmlToSend);
 
             alert(xmlhttp.responseXML.xml);
         }
