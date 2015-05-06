@@ -173,7 +173,7 @@
                     }
                 }
                 }
-                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx", true);
+                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
                 xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
                 xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
                 xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
