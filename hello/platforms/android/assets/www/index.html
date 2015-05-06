@@ -18,7 +18,7 @@
             </div>
         </div>-->
     <div id="demo"> 
-        <input id="LoginButton" type="button" value="GET ITEMS" onclick="soap(); "/>
+        <input id="LoginButton" type="button" value="GET ITEMS" onclick="javascript:soap();"/>
 
         <div id="response">
            
@@ -146,7 +146,6 @@
         //    jQuery.support.cors = true;
         //});
         function soap() {
-            alert("xmlhttp");
             var xmlhttp = new XMLHttpRequest();
             var xmlToSend = "<?xml version='1.0' encoding='utf-8'?>";
             xmlToSend += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' ";
@@ -154,26 +153,30 @@
             xmlToSend += "xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
             xmlToSend += "<soap:Body><HelloWorld xmlns='http://tempuri.org/' />";
             xmlToSend += "</soap:Body></soap:Envelope>";
-            //var xmldoc = new ActiveXObject("Microsoft.XMLDOM");
-            //xmldoc.loadXML(xmlToSend);
-            //xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add",true);
-            xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/HelloWorld");
-            xmlhttp.setRequestHeader("Content-Type", "text/xml");
-            xmlhttp.onreadystatechange = state_Change;
-            xmlhttp.send(xmlToSend);
+                var handleStateChange = function () {
 
-            alert(xmlhttp.responseXML.xml);
+                    if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        alert('Response' + xmlhttp.responseText);
+                        alert(xmlhttp.status);
+                        callback(xmlhttp.responseText);
+                    }
+                    else {
+                        alert('Error ' + xmlhttp.status);
+
+                        callback(xmlhttp.statusText);
+                    }
+                }
+                }
+                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+                xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
+                xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+                xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+                xmlhttp.onreadystatechange = handleStateChange;
+                xmlhttp.send(xmlToSend);
         }
-        function state_Change() {
-            if (xmlhttp.readyState == 4) {
-                if (xmlhttp.status == 200) {
-                    alert("OK");
-                }
-                else {
-                    alert("Problem retrieving XML data");
-                }
-            }
+        function callback(data) {
+            alert();
         }
 
     </script>
