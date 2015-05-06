@@ -147,41 +147,34 @@
         //});
         function soap() {
             var xmlhttp = new XMLHttpRequest();
-            var sr = "<?xml version='1.0' encoding='utf-8'?>";
-            sr += "<soap:Envelope";
-            sr +=" xmlns:xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
-            sr +=" xmlns:xsd='http://www.w3.org/2001/XMLSchema'";
-            sr +=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
-            sr += "<soap:Body>";
-            sr += "<Add xmlns='http://tempuri.org/'>";
-            sr += "<x>" + 40 +"</x>";
-            sr += "<y>" +50 + "</y>";
-            sr += "</Add>";
-            sr += "</soap:Body>";
-            sr += "</soap:Envelope>";
-                var handleStateChange = function () {
+            var xmlToSend = "<?xml version='1.0' encoding='utf-8'?>";
+            xmlToSend += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' ";
+            xmlToSend += "xmlns:xsd='http://www.w3.org/2001/XMLSchema' ";
+            xmlToSend += "xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+            xmlToSend += "<soap:Body><HelloWorld xmlns='http://tempuri.org/' />";
+            xmlToSend += "</soap:Body></soap:Envelope>";
+            var xmldoc = new ActiveXObject("Microsoft.XMLDOM");
+            xmldoc.loadXML(xmlToSend);
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            xmlhttp.onreadystatechange = state_Change;
+            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx", false);
+            xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/HelloWorld");
+            xmlhttp.setRequestHeader("Content-Type", "text/xml");
+            xmlhttp.send(xmldoc);
 
-                    if (xmlhttp.readyState == 4) {
-                    if (xmlhttp.status == 200) {
-                        alert('Response' + xmlhttp.responseText);
-                        alert(xmlhttp.status);
-                        callback(xmlhttp.responseText);
-                    }
-                    else {
-                        alert('Error ' + xmlhttp.status);
-                        callback(xmlhttp.statusText);
-                    }
-                }
-                }
-                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
-                xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
-                xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-                xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-                xmlhttp.onreadystatechange = handleStateChange;
-                xmlhttp.send(sr);
+            alert(xmlhttp.responseXML.xml);
         }
-        function callback(data) {
-            alert();
+        function state_Change() {
+            // if xmlhttp shows "loaded"
+            if (xmlhttp.readyState == 4) {
+                // if "OK"
+                if (xmlhttp.status == 200) {
+                    alert("OK");
+                }
+                else {
+                    alert("Problem retrieving XML data");
+                }
+            }
         }
 
     </script>
