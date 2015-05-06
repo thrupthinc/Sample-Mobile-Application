@@ -169,7 +169,7 @@
                 }
                 }
                 xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=HelloWorld", true);
-                xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/HelloWorld");
+                xmlhttp.setRequestHeader("SOAPAction", '"http://tempuri.org/HelloWorld"');
                 xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
                 xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
                 xmlhttp.onreadystatechange = handleStateChange;
