@@ -146,10 +146,9 @@
         function soap() {
             var xmlhttp = new XMLHttpRequest();
             alert("post");
-            //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
             var sr = "<?xml version='1.0' encoding='utf-8'?>";
             sr += "<soap:Envelope";
-            sr +=" xmlns: xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
+            sr +=" xmlns:xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
             sr +=" xmlns:xsd='http://www.w3.org/2001/XMLSchema'";
             sr +=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
             sr += "<soap:Body>";
@@ -162,25 +161,26 @@
                 var handleStateChange = function () {
 
                     if (xmlhttp.readyState == 4) {
-                    //if (xmlhttp.status == 200) {
-                        //alert('done use firebug to see response');
+                    if (xmlhttp.status == 200) {
+                        alert('done use firebug to see response');
                         alert('Response' + xmlhttp.responseText);
                         alert(xmlhttp.status);
                         callback(xmlhttp.responseText);
-                    //}
-                    //else {
-                    //    alert('Error ' + xmlhttp.status);
-                    //    callback(xmlhttp.statusText);
-                    //}
+                    }
+                    else {
+                        alert('Error ' + xmlhttp.status);
+                        callback(xmlhttp.statusText);
+                    }
                 }
                 }
                 xmlhttp.onreadystatechange = handleStateChange;
                 xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
                 xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
+                xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
                 alert("soapAction");
                 xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
                 alert("text/xml");
-                xmlhttp.send();
+                xmlhttp.send(sr);
                 alert("kkkkk");
                 var xmlResponse = xmlHTTP.responseXML;
                 alert(xmlResponse.xml);
