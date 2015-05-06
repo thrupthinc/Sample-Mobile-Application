@@ -147,6 +147,7 @@
         //});
         function soap() {
             var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('POST', 'http://localhost:57564/EmployeeData.asmx?op=HelloWorld', true);
             var xmlToSend = "<?xml version='1.0' encoding='utf-8'?>";
             xmlToSend += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' ";
             xmlToSend += "xmlns:xsd='http://www.w3.org/2001/XMLSchema' ";
@@ -168,10 +169,9 @@
                     }
                 }
                 }
-                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=HelloWorld", true);
-                xmlhttp.setRequestHeader("SOAPAction", '"http://tempuri.org/HelloWorld"');
-                xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-                xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+                xmlhttp.setRequestHeader('SOAPAction', '"http://tempuri.org/HelloWorld"');
+                xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+                xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
                 xmlhttp.onreadystatechange = handleStateChange;
                 xmlhttp.send(xmlToSend);
         }
