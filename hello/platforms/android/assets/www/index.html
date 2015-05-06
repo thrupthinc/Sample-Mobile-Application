@@ -1,7 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"> 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"  content="no"/>
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
@@ -172,7 +172,7 @@
                     }
                 }
                 }
-                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+                xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx", true);
                 xmlhttp.setRequestHeader("SOAPAction", "http://tempuri.org/Add");
                 xmlhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
                 xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
