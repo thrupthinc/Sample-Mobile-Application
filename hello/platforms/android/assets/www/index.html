@@ -147,7 +147,7 @@
         //});
         function soap() {
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open('POST', 'http://10.0.2.2:80/EmployeeData.asmx?op=HelloWorld', true);
+            xmlhttp.open('POST', 'http://192.168.0.179/EmployeeData.asmx?op=HelloWorld', true);
             var xmlToSend = "<?xml version='1.0' encoding='utf-8'?>";
             xmlToSend += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' ";
             xmlToSend += "xmlns:xsd='http://www.w3.org/2001/XMLSchema' ";
