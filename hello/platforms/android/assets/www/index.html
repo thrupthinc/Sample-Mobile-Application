@@ -145,39 +145,39 @@
         //$(document).ready(function () {
         //    jQuery.support.cors = true;
         //});
-        function soap() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open('POST', 'http://192.168.0.179/HelloWorld/EmployeeData.asmx?op=HelloWorld', true);
-            var xmlToSend = "<?xml version='1.0' encoding='utf-8'?>";
-            xmlToSend += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' ";
-            xmlToSend += "xmlns:xsd='http://www.w3.org/2001/XMLSchema' ";
-            xmlToSend += "xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
-            xmlToSend += "<soap:Body><HelloWorld xmlns='http://tempuri.org/' />";
-            xmlToSend += "</soap:Body></soap:Envelope>";
-                var handleStateChange = function () {
+        //function soap() {
+        //    var xmlhttp = new XMLHttpRequest();
+        //    xmlhttp.open('POST', 'http://192.168.0.179/HelloWorld/EmployeeData.asmx?op=HelloWorld', true);
+        //    var xmlToSend = "<?xml version='1.0' encoding='utf-8'?>";
+        //    xmlToSend += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' ";
+        //    xmlToSend += "xmlns:xsd='http://www.w3.org/2001/XMLSchema' ";
+        //    xmlToSend += "xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+        //    xmlToSend += "<soap:Body><HelloWorld xmlns='http://tempuri.org/' />";
+        //    xmlToSend += "</soap:Body></soap:Envelope>";
+        //        var handleStateChange = function () {
 
-                    if (xmlhttp.readyState == 4) {
-                    if (xmlhttp.status == 200) {
-                        alert('Response' + xmlhttp.responseText);
-                        alert(xmlhttp.status);
-                        callback(xmlhttp.responseText);
-                    }
-                    else {
-                        alert('Error ' + xmlhttp.status);
+        //            if (xmlhttp.readyState == 4) {
+        //            if (xmlhttp.status == 200) {
+        //                alert('Response' + xmlhttp.responseText);
+        //                alert(xmlhttp.status);
+        //                callback(xmlhttp.responseText);
+        //            }
+        //            else {
+        //                alert('Error ' + xmlhttp.status);
 
-                        callback(xmlhttp.statusText);
-                    }
-                }
-                }
-                xmlhttp.setRequestHeader('SOAPAction', '"http://tempuri.org/HelloWorld"');
-                xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
-                xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
-                xmlhttp.onreadystatechange = handleStateChange;
-                xmlhttp.send(xmlToSend);
-        }
-        function callback(data) {
-            alert(data);
-        }
+        //                callback(xmlhttp.statusText);
+        //            }
+        //        }
+        //        }
+        //        xmlhttp.setRequestHeader('SOAPAction', '"http://tempuri.org/HelloWorld"');
+        //        xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+        //        xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
+        //        xmlhttp.onreadystatechange = handleStateChange;
+        //        xmlhttp.send(xmlToSend);
+        //}
+        //function callback(data) {
+        //    alert(data);
+        //}
 //function soap() {
 //    var bool = false;
 //    var request;
@@ -228,7 +228,49 @@
 //    request.setRequestHeader('SOAPAction', '"http://tempuri.org/Add"');
 
 //    request.send(xmlToSend);
-//}
+        //}
+        function soap() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=Add", true);
+            alert("post");
+            xmlhttp.setRequestHeader("SOAPAction", "http://localhost/2015/MyMobApp/HelloWorld");
+            alert("soapAction");
+            xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+            alert("text/xml");
+            //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
+            xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
+            xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
+            xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"';
+            xmlToSend += '<soap:Body><HelloWorld xmlns="http://localhost/2015/MyMobApp" />';
+            xmlToSend += "</soap:Body></soap:Envelope>";
+
+            xmlhttp.onreadystatechange = function () {
+
+                if (xmlhttp.readyState == 4) {
+                    alert(xmlToSend);
+                    alert(xmlhttp.readyState);
+                    alert(xmlhttp.status);
+                    if (xmlhttp.status == 200) {
+                        //alert('done use firebug to see response');
+                        alert('Response' + xmlhttp.responseText);
+                        alert(xmlhttp.status);
+                        callback();
+
+                    }
+                    else {
+                        alert('Error ' + xmlhttp.status);
+                    }
+                }
+            }
+            // = handleStateChange;
+            xmlhttp.send(xmlToSend);
+            var xmlResponse = xmlHTTP.responseXML;
+            alert(xmlResponse.xml);
+        }
+        function callback(data) {
+            alert(data);
+        }
 </script>
 </body>
 </html>
