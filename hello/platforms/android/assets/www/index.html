@@ -145,10 +145,10 @@
         //$(document).ready(function () {
         //    jQuery.support.cors = true;
         //});
-        function soap() {
+       function soap() {
             var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("POST", "http://localhost:2015/EmployeeData.asmx?op=HelloWorld", true);
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
         xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
         xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
