@@ -147,14 +147,14 @@
         //});
        function soap() {
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "http://localhost:57564/EmployeeData.asmx?op=HelloWorld", true);
+            xmlhttp.open("POST", "http://localhost:2015/EmployeeData.asmx?op=HelloWorld", true);
         //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
         xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
         xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
         xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"';
         xmlToSend += '<soap:Body>';
-        xmlToSend += '<HelloWorld xmlns="http://localhost/2015/" />';
+        xmlToSend += '<HelloWorld xmlns="http://localhost/2015/MyMobApp" />';
         xmlToSend += '</soap:Body>';
         xmlToSend += '</soap:Envelope>';
                 var handleStateChange = function () {
