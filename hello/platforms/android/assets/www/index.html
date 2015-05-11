@@ -147,14 +147,14 @@
         //});
        function soap() {
             var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST", "http://122.166.232.27/EmployeeData.asmx?op=HelloWorld", true);
+            xmlhttp.open("POST", "http://122.166.232.27:2015/EmployeeData.asmx?op=HelloWorld", true);
         //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
         xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
         xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
         xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"';
         xmlToSend += '<soap:Body>';
-        xmlToSend += '<HelloWorld xmlns="http://122.166.232.27/2015/MyMobApp" />';
+        xmlToSend += '<HelloWorld xmlns="http://localhost/2015/MyMobApp" />';
         xmlToSend += '</soap:Body>';
         xmlToSend += '</soap:Envelope>';
                 var handleStateChange = function () {
@@ -172,7 +172,7 @@
                     }
                 }
                 }
-                xmlhttp.setRequestHeader('SOAPAction', '"http://122.166.232.27/MyMobApp/HelloWorld"');
+                xmlhttp.setRequestHeader('SOAPAction', '"http://localhost/2015/MyMobApp/HelloWorld"');
                 xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
                 xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
                 xmlhttp.onreadystatechange = handleStateChange;
