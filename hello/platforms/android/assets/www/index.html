@@ -148,7 +148,7 @@
         //});
        function soap() {
             var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "http://192.168.0.179:2015/EmployeeData.asmx?op=HelloWorld", true);
+            xmlhttp.open("POST", "http://192.168.0.179:2015/EmployeeData.asmx?op=HelloWorld", false);
         //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
         xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
