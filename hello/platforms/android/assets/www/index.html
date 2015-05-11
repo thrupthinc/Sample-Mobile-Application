@@ -148,7 +148,7 @@
         //});
        function soap() {
            var xmlhttp = new XMLHttpRequest();
-           var url = "https://www.google.co.in/";
+           var url = "http://192.168.0.179:2015/EmployeeData.asmx?op=HelloWorld";
            //url = url + "?enable_cors_headers=true&enable_http_auth=true";
             xmlhttp.open("POST", url, true);
         //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
@@ -157,7 +157,7 @@
             xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema"" ';
             xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
             xmlToSend += '<soap:Body>';
-            xmlToSend += '<HelloWorld xmlns="http://localhost/2015/" />';
+            xmlToSend += '<HelloWorld xmlns="http://192.168.0.179:2015/" />';
             xmlToSend += '</soap:Body>';
             xmlToSend += '</soap:Envelope>';
                 var handleStateChange = function () {
@@ -176,7 +176,7 @@
                 }
                 }
                 xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
-                xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
+                xmlhttp.setRequestHeader('SOAPAction', "http://192.168.0.179:2015/HelloWorld");
                 //xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
                 xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
                 xmlhttp.onreadystatechange = handleStateChange;
