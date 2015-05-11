@@ -147,8 +147,10 @@
         //    jQuery.support.cors = true;
         //});
        function soap() {
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open("POST", "http://192.168.0.179:2015/EmployeeData.asmx?op=HelloWorld", false);
+           var xmlhttp = new XMLHttpRequest();
+           var url = "http://192.168.0.179:2015/EmployeeData.asmx?op=HelloWorld";
+           url = url + "?enable_cors_headers=true&enable_http_auth=true";
+            xmlhttp.open("POST", url, false);
         //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
         xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
@@ -174,7 +176,7 @@
                 }
                 }
                 xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
-                xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+                //xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
                 xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
                 xmlhttp.onreadystatechange = handleStateChange;
                 xmlhttp.send(xmlToSend);
