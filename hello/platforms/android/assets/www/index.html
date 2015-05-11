@@ -175,6 +175,7 @@
                     }
                 }
                 }
+                xmlhttp.setRequestHeader('Authorization', make_base_auth('E0066', 'User!@#'));
                 xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
                 xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
                 //xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
