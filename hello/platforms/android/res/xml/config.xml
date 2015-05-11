@@ -9,7 +9,7 @@
         Apache Cordova Team
     </author>
       <access origin="*" />
-  <!--<access uri ="http://localhost:2015/" subdomains="true"/>-->
+<access uri ="http://192.168.0.179:2015/" subdomains="true"/>
     <content src="index.html" />
     <preference name="Fullscreen" value="true" />
     <preference name="Orientation" value="landscape" />
