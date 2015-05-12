@@ -29,7 +29,8 @@
                 data: Data, //Data sent to server
                 contentType: ContentType, // content type sent to server
                 dataType: DataType, //Expected data format from server
-                processdata: ProcessData, //True or False
+                processdata: ProcessData,
+                 method:method,  //True or False
                 success: function (msg) {//On Successfull service call
                     ServiceSucceeded(msg);
                 },
@@ -125,7 +126,7 @@
           <input type="password" ng-model="loginData.password" placeholder="Password" id="txtPwd">
       </label>
       <label class="item">
-           <button class="button button-block button-positive" type="submit" onclick="javasctipt: return GetEmployee();">Log in</button>
+           <input class="button button-block button-positive" type="button" onclick="javasctipt: return GetEmployee();">Log in</input>
        </label>
     </div>
 <!--    <asp:ScriptManager ID="ScriptManager1" runat="server">
