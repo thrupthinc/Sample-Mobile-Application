@@ -147,12 +147,17 @@
         //    jQuery.support.cors = true;
         //});
        function soap() {
-           var xmlhttp = new XMLHttpRequest();
-           var creds = {
-               username: "E0066",
-               password: "User!@#"
-           };
-           var credentials = btoa(creds.username + ":" + creds.password);
+           //var xmlhttp = new XMLHttpRequest();
+           //var creds = {
+           //    username: "E0066",
+           //    password: "User!@#"
+           //};
+           //var credentials = btoa(creds.username + ":" + creds.password);
+           function make_base_auth(user, password) {
+               var tok = user + ':' + password;
+               var hash = btoa(tok);
+               return "Basic " + hash;
+           }
            var url = "http://192.168.0.179:2015/EmployeeData.asmx?op=HelloWorld";
            //url = url + "?enable_cors_headers=true&enable_http_auth=true";
             xmlhttp.open("POST", url, true);
@@ -180,10 +185,10 @@
                     }
                 }
                 }
-                xmlhttp.setRequestHeader("Authorization", "Basic " + credentials);
+                xmlhttp.setRequestHeader("Authorization", make_base_auth("E0066","User!@#");
                 xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
                 xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
-                //xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+                xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
                 xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
                 xmlhttp.onreadystatechange = handleStateChange;
                 xmlhttp.send(xmlToSend);
