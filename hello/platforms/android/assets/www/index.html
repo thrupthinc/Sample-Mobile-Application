@@ -49,7 +49,6 @@
         }
             
         function GetEmployee() {
-
             var uesrid = "1";
             Type = "POST";
             Url = "http://122.166.232.27:8090/XBSService/Service1.svc/getLoginInfo";
@@ -62,7 +61,7 @@
 
         function ServiceSucceeded(result) {
             if (DataType == "jsonp") {
-                if (method == "CreateEmployee") {
+                if (method == "getLoginInfo") {
                     alert(result);
                 }
                 else {
