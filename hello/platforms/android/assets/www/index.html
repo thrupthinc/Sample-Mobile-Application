@@ -126,46 +126,46 @@
         //     var hash = btoa(tok);
         //     return "Basic " + hash;
         // }
-        //function soap() {
-        //    var xmlhttp = new XMLHttpRequest();
-        //    var url = "http://localhost:2015/EmployeeData.asmx?op=HelloWorld";
-        //    //url = url + "?enable_cors_headers=true&enable_http_auth=true";
-        //    xmlhttp.open("POST", url, true);
-        //    //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-        //    var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
-        //    xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
-        //    xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema"" ';
-        //    xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
-        //    xmlToSend += '<soap:Body>';
-        //    xmlToSend += '<HelloWorld xmlns="http://localhost/2015/" />';
-        //    xmlToSend += '</soap:Body>';
-        //    xmlToSend += '</soap:Envelope>';
-        //    var handleStateChange = function () {
+        function soap() {
+            var xmlhttp = new XMLHttpRequest();
+            var url = "http://currencyconverter.kowabunga.net/converter.asmx?op=GetConversionAmount";
+            //url = url + "?enable_cors_headers=true&enable_http_auth=true";
+            xmlhttp.open("POST", url, true);
+            //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
+            xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
+            xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema"" ';
+            xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
+            xmlToSend += '<soap:Body>';
+            xmlToSend += '<HelloWorld xmlns="http://localhost/2015/" />';
+            xmlToSend += '</soap:Body>';
+            xmlToSend += '</soap:Envelope>';
+            var handleStateChange = function () {
 
-        //        if (xmlhttp.readyState == 4) {
-        //            if (xmlhttp.status == 200) {
-        //                alert('Response' + xmlhttp.responseText);
-        //                alert(xmlhttp.status);
-        //                callback(xmlhttp.responseText);
-        //            }
-        //            else {
-        //                alert('Error ' + xmlhttp.status);
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        alert('Response' + xmlhttp.responseText);
+                        alert(xmlhttp.status);
+                        callback(xmlhttp.responseText);
+                    }
+                    else {
+                        alert('Error ' + xmlhttp.status);
 
-        //                callback(xmlhttp.statusText);
-        //            }
-        //        }
-        //    }
-        //    //xmlhttp.setRequestHeader("Authorization", make_base_auth("E0066", "User!@#"));
-        //    xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
-        //    xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
-        //    xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
-        //    xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
-        //    xmlhttp.onreadystatechange = handleStateChange;
-        //    xmlhttp.send(xmlToSend);
-        //}
-        //function callback(data) {
-        //    alert(data);
-        //}
+                        callback(xmlhttp.statusText);
+                    }
+                }
+            }
+            xmlhttp.setRequestHeader("Authorization", make_base_auth("E0066", "User!@#"));
+            xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
+            xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
+            xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+            xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
+            xmlhttp.onreadystatechange = handleStateChange;
+            xmlhttp.send(xmlToSend);
+        }
+        function callback(data) {
+            alert(data);
+        }
         //function soap() {
         //    var bool = false;
         //    var request;
@@ -255,42 +255,9 @@
         //function callback(data) {
         //    alert(data);
         //}
-
-  $(document).ready(function(){
-      $("#getContactBtn").click(getContactList);
-  });
-        function onDeviceReady() {
-            console.log("Entering index.html.onDeviceReady");
-            getContactList();
-            console.log("Exiting index.html.onDeviceReady");
-        }
-        function getContactList(){ 
-            console.log("Entering getContactList()");
-            $.ajax({
-                url: "http://localhost:2015/EmployeeData.asmx?op=HelloWorld",
-                dataType:"xml",
-                cache: false,
-                error:function (xhr, ajaxOptions, thrownError){
-                    debugger;
-                    alert(xhr.statusText);
-                    alert(thrownError);
-                },
-                success : function(xml) {
-                    console.log("Entering getContactList.success()");
-      
-                    $(xml).find("contact").each(function() {
-                        var html = '<li>' + $(this).find("firstName").text() 
-                        + ' ' + $(this).find("lastName").text() +'</li>';
-                        $('#contactList').append(html);
-                    });
-                    console.log("Exiting getContactList.success()");
-                } 
-            });
-            console.log("Exiting getContactList()");
-        }
 </script>
 </head>
 <body>
- <<button id="getContactBtn">Get Contact</button> />
+ <input type="button" value="Get Data" onclick="return soap()" />
 </body>
 </html>
