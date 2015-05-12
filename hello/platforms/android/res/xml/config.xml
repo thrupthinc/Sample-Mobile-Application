@@ -8,31 +8,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <access origin="http://localhost:2015/" />
-<access uri ="http://localhost:2015/" subdomains="true"/>
-    <content src="index.html" />
-    <preference name="Fullscreen" value="true" />
-    <preference name="Orientation" value="landscape" />
-    <preference name="DisallowOverscroll" value="true" />
-    <access uri="*" subdomains="true" />
-  <feature name="Device">
-    <param name="android-package" value="org.apache.cordova.device.Device" />
-  </feature>
-  <platform name="android">
-    <preference name="Fullscreen" value="true" />
-  </platform>
-  <configuration>
-    <system.web>
-      <compilation debug="true" targetFramework="4.0"/>
-    </system.web>
-    <system.webServer>
-      <httpProtocol>
-        <customHeaders>
-          <add name="Access-Control-Allow-Origin" value="*" />
-          <add name="Access-Control-Allow-Headers" value="Content-Type" />
-        </customHeaders>
-      </httpProtocol>
-    </system.webServer>
-  </configuration>
+  <content src="index.html" />
+    <access origin="*" />
 </widget>
 
