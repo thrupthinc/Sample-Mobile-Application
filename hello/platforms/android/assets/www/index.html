@@ -121,22 +121,17 @@
         //$(document).ready(function () {
         //    jQuery.support.cors = true;
         //});
-       // function make_base_auth(user, password) {
-       //     var tok = user + ':' + password;
-       //     var hash = btoa(tok);
-       //     return "Basic " + hash;
-       // }
-       function soap() {
-           var xmlhttp = new XMLHttpRequest();
-           //var creds = {
-           //    username: "E0066",
-           //    password: "User!@#"
-           //};
-           //var credentials = btoa(creds.username + ":" + creds.password);
-           var url = "http://localhost:2015/EmployeeData.asmx?op=HelloWorld";
-           //url = url + "?enable_cors_headers=true&enable_http_auth=true";
+        // function make_base_auth(user, password) {
+        //     var tok = user + ':' + password;
+        //     var hash = btoa(tok);
+        //     return "Basic " + hash;
+        // }
+        function soap() {
+            var xmlhttp = new XMLHttpRequest();
+            var url = "http://localhost:2015/EmployeeData.asmx?op=HelloWorld";
+            //url = url + "?enable_cors_headers=true&enable_http_auth=true";
             xmlhttp.open("POST", url, true);
-        //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
             var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
             xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
             xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema"" ';
@@ -145,9 +140,9 @@
             xmlToSend += '<HelloWorld xmlns="http://localhost/2015/" />';
             xmlToSend += '</soap:Body>';
             xmlToSend += '</soap:Envelope>';
-                var handleStateChange = function () {
+            var handleStateChange = function () {
 
-                    if (xmlhttp.readyState == 4) {
+                if (xmlhttp.readyState == 4) {
                     if (xmlhttp.status == 200) {
                         alert('Response' + xmlhttp.responseText);
                         alert(xmlhttp.status);
@@ -159,68 +154,68 @@
                         callback(xmlhttp.statusText);
                     }
                 }
-                }
-                xmlhttp.setRequestHeader("Authorization", make_base_auth("E0066","User!@#"));
-                xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
-                xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
-                xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
-                xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
-                xmlhttp.onreadystatechange = handleStateChange;
-                xmlhttp.send(xmlToSend);
+            }
+            //xmlhttp.setRequestHeader("Authorization", make_base_auth("E0066", "User!@#"));
+            xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
+            xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
+            xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+            xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
+            xmlhttp.onreadystatechange = handleStateChange;
+            xmlhttp.send(xmlToSend);
         }
         function callback(data) {
             alert(data);
         }
-//function soap() {
-//    var bool = false;
-//    var request;
-//    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-//        netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
-//        netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");	
-//        request = new XMLHttpRequest();
-//        bool = true;
-//    }
-//    else {// code for IE6, IE5
-//        request = new ActiveXObject('Microsoft.XMLHTTP');
-//    }
+        //function soap() {
+        //    var bool = false;
+        //    var request;
+        //    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+        //        netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+        //        netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");	
+        //        request = new XMLHttpRequest();
+        //        bool = true;
+        //    }
+        //    else {// code for IE6, IE5
+        //        request = new ActiveXObject('Microsoft.XMLHTTP');
+        //    }
 
-//    var method = 'POST';
-//    var url = 'http://cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx';
-//    var async = true;
-//    request.open(method, url, async);
+        //    var method = 'POST';
+        //    var url = 'http://cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx';
+        //    var async = true;
+        //    request.open(method, url, async);
 
-//    request.onreadystatechange = function() {
-//        if (bool) {
-//            netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
-//            netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
-//        }
-//        if (request.readyState == 4 && request.status == 200) {
-//            document.getElementById("myDiv").innerHTML = 'Response: '
-//            + request.responseText; 
-//        }
-//        else if (request.readyState == 4 && request.status != 200) {
-//            document.getElementById("myDiv").innerHTML
-//            = 'Status: ' + request.status + '&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;' 
-//            + request.statusText + '<br/><br/>' +
-//            'Response: ' + request.getAllResponseHeaders();
-//        }
-//        else {
-//            document.getElementById("myDiv").innerHTML = 'Processing...';
-//        }
-//    }
-//    var param = '040173743';
-//   var xmlToSend = "<?xml version='1.0' encoding='utf-8'?>";
-//    xmlToSend += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' ";
-//    xmlToSend += "xmlns:xsd='http://www.w3.org/2001/XMLSchema' ";
-//    xmlToSend += "xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
-//    xmlToSend += "<soap:Body><HelloWorld xmlns='http://tempuri.org/' />";
-//    xmlToSend += "</soap:Body></soap:Envelope>";
+        //    request.onreadystatechange = function() {
+        //        if (bool) {
+        //            netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+        //            netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+        //        }
+        //        if (request.readyState == 4 && request.status == 200) {
+        //            document.getElementById("myDiv").innerHTML = 'Response: '
+        //            + request.responseText; 
+        //        }
+        //        else if (request.readyState == 4 && request.status != 200) {
+        //            document.getElementById("myDiv").innerHTML
+        //            = 'Status: ' + request.status + '&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;' 
+        //            + request.statusText + '<br/><br/>' +
+        //            'Response: ' + request.getAllResponseHeaders();
+        //        }
+        //        else {
+        //            document.getElementById("myDiv").innerHTML = 'Processing...';
+        //        }
+        //    }
+        //    var param = '040173743';
+        //   var xmlToSend = "<?xml version='1.0' encoding='utf-8'?>";
+        //    xmlToSend += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' ";
+        //    xmlToSend += "xmlns:xsd='http://www.w3.org/2001/XMLSchema' ";
+        //    xmlToSend += "xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+        //    xmlToSend += "<soap:Body><HelloWorld xmlns='http://tempuri.org/' />";
+        //    xmlToSend += "</soap:Body></soap:Envelope>";
 
 
-//    request.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
-//    request.setRequestHeader('SOAPAction', '"http://tempuri.org/Add"');
+        //    request.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
+        //    request.setRequestHeader('SOAPAction', '"http://tempuri.org/Add"');
 
-//    request.send(xmlToSend);
+        //    request.send(xmlToSend);
         //}
         //function soap() {
         //    var xmlhttp = new XMLHttpRequest();
