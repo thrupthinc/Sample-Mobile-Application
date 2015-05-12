@@ -13,128 +13,256 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
-                var Type;
-        var Url;
-        var Data;
-        var ContentType;
-        var DataType;
-        var ProcessData;
-        var method;
-        //Generic function to call WCF  Service
-        function CallService() {
-            
-            $.ajax({
-                type: Type, //GET or POST or PUT or DELETE verb
-                url: Url, // Location of the service
-                data: Data, //Data sent to server
-                contentType: ContentType, // content type sent to server
-                dataType: DataType, //Expected data format from server
-                processdata: ProcessData,
-                 method:method,  //True or False
-                success: function (msg) {//On Successfull service call
-                    ServiceSucceeded(msg);
-                },
-                error: ServiceFailed// When Service call fails
-            });
-        }
+        //function onDeviceReady() { }
+        //document.addEventListener("deviceready", onDeviceReady, false);
 
-        function ServiceFailed(result) {
-            alert('test');
-            alert('Service call failed: ' + result.status + '' + result.statusText);
-            Type = null;
-            Url = null;
-            Data = null;
-            ContentType = null;
-            DataType = null;
-            ProcessData = null;
-        }
-            
-        function GetEmployee() {
-            var uesrid = "1";
-            Type = "POST";
-            Url = "http://122.166.232.27:8090/XBSService/Service1.svc/getLoginInfo";
-            Data = { 'userName': "" + document.getElementById('txtName').value + "", 'password': "" + document.getElementById('txtPwd').value + "" },
-            DataType = "jsonp"; ProcessData = false;
-            method = "getLoginInfo";
-            CallService();
-            return false;
-        }
+        //function LoginButton_onclick() {
+        //    $.ajax({
+        //        type: "POST",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        url: "http://localhost:57564/EmployeeData.asmx?op=HelloWorld",
+        //        data: '{}',
+        //        success: function (msg) {
+        //            alert(msg);
+        //            jsonArray = $.parseJSON(msg.d);
+        //            var $ul = $('<ul id="details">');
+        //            for (i = 0; i < jsonArray.length; i++) {
+        //                $("#details").append('<div id="' + i + '" name="head" >' + jsonArray[i].name + '</div>');
+        //            }
+        //        },
+        //        error: function (msg) {
+        //            alert("Error");
+        //        }
+        //    });
 
-        function ServiceSucceeded(result) {
-            if (DataType == "jsonp") {
-                if (method == "getLoginInfo") {
-                    alert(result);
+        //}
+
+        //$(document).ready(function () {
+        //    $("#LoginButton").click(function (event) {
+        //        alert("hello");
+        //        var webserUrl = "http://localhost:57564/EmployeeData.asmx?op=Add";
+        //        alert(webserUrl);
+        //        var sr = "<?xml version='1.0' encoding='utf-8'?>";
+        //            sr += "<soap:Envelope";
+        //            sr +=" xmlns:xsi = 'http://www.w3.org/2001/XMLSchema-instance'";
+        //            sr +=" xmlns:xsd='http://www.w3.org/2001/XMLSchema'";
+        //            sr +=" xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+        //            sr += "<soap:Body>";
+        //            sr += "<Add xmlns='http://tempuri.org/'>";
+        //            sr += "<x>40</x>";
+        //            sr += "<y>50</y>";
+        //            sr += "</Add>";
+        //            sr += "</soap:Body>";
+        //            sr += "</soap:Envelope>";
+        //            $.ajax({
+        //            type: "POST",
+        //            url: webserUrl,
+        //            contentType: "text/xml; charset=utf-8",
+        //            dataType: "xml",
+        //            data: sr,
+        //            success: function (data, status, req) {
+        //                if (status == "success")
+        //                    alert(req.responseText);
+        //                alert(data.d);
+        //            },
+        //            error: function (data, status, req) {
+        //                alert(req.responseText + " " + status);
+        //            }
+        //        });
+        //    });
+        //});
+        //function SuccessOccur(data, status, req) {
+        //    if (status == "success")
+        //        alert(req.responseText);
+        //}
+        //function ErrorOccur(data, status, req) {
+        //    alert(req.responseText + " " + status);
+        //}
+        //$(document).ajaxError(function (e, jqxhr, settings, exception) {
+        //    if (jqxhr.readyState == 0 || jqxhr.status == 0) {
+        //        return; //Skip this error
+        //    }
+        //var webserUrl = "http://localhost:57564/EmployeeData.asmx?op=Add";
+        //var sr = '<?xml version="1.0" encoding="utf-8"?>';
+        //    sr += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
+        //    'xmlns:xsd="http://www.w3.org/2001/XMLSchema"';
+        //                 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+        //                  '<soap:Body>' +
+        //                '<Add xmlns="http://tempuri.org/">' +
+        //                '<x>40</x>' +
+        //                '<y>50</y>' +
+        //                '</Add>' +
+        //                '</soap:Body>' +
+        //                '</soap:Envelope>';
+        //function callService() {
+        //    alert("hhh");
+        //    $.ajax({
+        //        type: "POST",
+        //        url: webserUrl,
+        //        contentType: "text/xml; charset=utf-8",
+        //        dataType: "xml",
+        //        data: soapRequest,
+        //        processData: false,
+        //        success: SuccessOccur,
+        //        error: ErrorOccur
+        //    });
+        //    alert("hhh");
+        //    return false;
+        //}
+        //function SuccessOccur(data, status, req) {
+        //    if (status == "success")
+        //        alert(req.responseText);
+        //    alert("lllll");
+        //}
+        //function ErrorOccur(data, status, req) {
+        //    alert(req.responseText + " " + status);
+        //}
+        //$(document).ready(function () {
+        //    jQuery.support.cors = true;
+        //});
+       // function make_base_auth(user, password) {
+       //     var tok = user + ':' + password;
+       //     var hash = btoa(tok);
+       //     return "Basic " + hash;
+       // }
+       function soap() {
+           var xmlhttp = new XMLHttpRequest();
+           //var creds = {
+           //    username: "E0066",
+           //    password: "User!@#"
+           //};
+           //var credentials = btoa(creds.username + ":" + creds.password);
+           var url = "http://localhost:2015/EmployeeData.asmx?op=HelloWorld";
+           //url = url + "?enable_cors_headers=true&enable_http_auth=true";
+            xmlhttp.open("POST", url, true);
+        //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
+            xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
+            xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema"" ';
+            xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
+            xmlToSend += '<soap:Body>';
+            xmlToSend += '<HelloWorld xmlns="http://localhost/2015/" />';
+            xmlToSend += '</soap:Body>';
+            xmlToSend += '</soap:Envelope>';
+                var handleStateChange = function () {
+
+                    if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        alert('Response' + xmlhttp.responseText);
+                        alert(xmlhttp.status);
+                        callback(xmlhttp.responseText);
+                    }
+                    else {
+                        alert('Error ' + xmlhttp.status);
+
+                        callback(xmlhttp.statusText);
+                    }
                 }
-                else {
-                    resultObject = result.GetEmployeeResult;
-                    var string = result
-                    alert(string);
                 }
-            }
+                xmlhttp.setRequestHeader("Authorization", make_base_auth("E0066","User!@#"));
+                xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
+                xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
+                xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+                xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
+                xmlhttp.onreadystatechange = handleStateChange;
+                xmlhttp.send(xmlToSend);
         }
-
-        function ServiceFailed(xhr) {
-            alert(xhr.responseText);
-            if (xhr.responseText) {
-                var err = xhr.responseText;
-                if (err)
-                    error(err);
-                else
-                    error({ Message: "Unknown server error." })
-            }
-            return;
+        function callback(data) {
+            alert(data);
         }
+//function soap() {
+//    var bool = false;
+//    var request;
+//    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+//        netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+//        netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");	
+//        request = new XMLHttpRequest();
+//        bool = true;
+//    }
+//    else {// code for IE6, IE5
+//        request = new ActiveXObject('Microsoft.XMLHTTP');
+//    }
 
-        $(document).ready(
-         function () {
-             try {
-                 //makeCall();
-             } catch (exception) {
-                 alert('ex' + exception.message);
-             }
-         }
-        );
+//    var method = 'POST';
+//    var url = 'http://cbr.ru/CreditInfoWebServ/CreditOrgInfo.asmx';
+//    var async = true;
+//    request.open(method, url, async);
 
-        function makeCall() {
-            var proxy = new JsonpAjaxService.Service1();
-            proxy.set_enableJsonp(true);
-            proxy.GetCustomer(onSuccess, onFail, null);
-        }
+//    request.onreadystatechange = function() {
+//        if (bool) {
+//            netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+//            netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+//        }
+//        if (request.readyState == 4 && request.status == 200) {
+//            document.getElementById("myDiv").innerHTML = 'Response: '
+//            + request.responseText; 
+//        }
+//        else if (request.readyState == 4 && request.status != 200) {
+//            document.getElementById("myDiv").innerHTML
+//            = 'Status: ' + request.status + '&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;' 
+//            + request.statusText + '<br/><br/>' +
+//            'Response: ' + request.getAllResponseHeaders();
+//        }
+//        else {
+//            document.getElementById("myDiv").innerHTML = 'Processing...';
+//        }
+//    }
+//    var param = '040173743';
+//   var xmlToSend = "<?xml version='1.0' encoding='utf-8'?>";
+//    xmlToSend += "<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' ";
+//    xmlToSend += "xmlns:xsd='http://www.w3.org/2001/XMLSchema' ";
+//    xmlToSend += "xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>";
+//    xmlToSend += "<soap:Body><HelloWorld xmlns='http://tempuri.org/' />";
+//    xmlToSend += "</soap:Body></soap:Envelope>";
 
-        // This function is called when the result from the service call is received
-        function onSuccess(result) {
-            alert(result.Name + " " + result.Address);
-        }
 
-        // This function is called if the service call fails
-        function onFail() {
-            alert("Error");
-        }
-    </script>
+//    request.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
+//    request.setRequestHeader('SOAPAction', '"http://tempuri.org/Add"');
+
+//    request.send(xmlToSend);
+        //}
+        //function soap() {
+        //    var xmlhttp = new XMLHttpRequest();
+        //    xmlhttp.open("POST", "http://localhost:2015/EmployeeData.asmx?op=HelloWorld", true);
+        //    //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+        //    var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
+        //    xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
+        //    xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
+        //    xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"';
+        //    xmlToSend += '<soap:Body>';
+        //    xmlToSend += '<HelloWorld xmlns="http://localhost/2015/MyMobApp" />';
+        //    xmlToSend += '</soap:Body>';
+        //    xmlToSend += '</soap:Envelope>';
+        //    xmlhttp.onreadystatechange = function () {
+
+        //        if (xmlhttp.readyState == 4) {
+        //            alert(xmlToSend);
+        //            alert(xmlhttp.readyState);
+        //            alert(xmlhttp.status);
+        //            if (xmlhttp.status == 200) {
+        //                //alert('done use firebug to see response');
+        //                alert('Response' + xmlhttp.responseText);
+        //                alert(xmlhttp.status);
+        //                callback();
+
+        //            }
+        //            else {
+        //                alert('Error ' + xmlhttp.status);
+        //            }
+        //        }
+        //    }
+        //    // = handleStateChange;
+        //    xmlhttp.send(xmlToSend);
+        //    var xmlResponse = xmlHTTP.responseXML;
+        //    alert(xmlResponse.xml);
+        //}
+        //function callback(data) {
+        //    alert(data);
+        //}
+</script>
 </head>
 <body>
-  <!--<ion-header-bar>
-  <h1 class="title">XBS Login</h1>
-  </ion-header-bar>
-    <ion-content>-->
-  <form ng-submit="doLogin()" runat="server">
-  <div class="list">
-      <label class="item item-input">
-           <input type="text" placeholder="Userame" id="txtName">
-      </label>
-      <label class="item item-input">
-          <input type="password" ng-model="loginData.password" placeholder="Password" id="txtPwd">
-      </label>
-      <label class="item">
-           <input class="button button-block button-positive" type="button" onclick="javasctipt: return GetEmployee();">Log in</input>
-       </label>
-    </div>
-<!--    <asp:ScriptManager ID="ScriptManager1" runat="server">
-        <Services>
-            <asp:ServiceReference Path="http://122.166.232.27:8090/XBSService/Service1.svc" />
-        </Services>
-    </asp:ScriptManager>-->
-  </form>
-<!--</ion-content>-->
+ <input type="button" value="Get Data" onclick="return soap()" />
 </body>
 </html>
