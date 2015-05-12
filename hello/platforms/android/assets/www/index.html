@@ -148,6 +148,11 @@
         //});
        function soap() {
            var xmlhttp = new XMLHttpRequest();
+           var creds = {
+               username: "E0066",
+               password: "User!@#"
+           };
+           var credentials = btoa(creds.username + ":" + creds.password);
            var url = "http://192.168.0.179:2015/EmployeeData.asmx?op=HelloWorld";
            //url = url + "?enable_cors_headers=true&enable_http_auth=true";
             xmlhttp.open("POST", url, true);
@@ -175,7 +180,7 @@
                     }
                 }
                 }
-                xmlhttp.setRequestHeader("Authorization","E0066", "User!@#");
+                xmlhttp.setRequestHeader("Authorization", "Basic " + credentials);
                 xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
                 xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
                 //xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
