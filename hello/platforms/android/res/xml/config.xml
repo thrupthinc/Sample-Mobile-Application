@@ -8,7 +8,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <access origin="http://localhost:2015/"/>
+    <access origin="http://localhost:2015/" />
 <access uri ="http://localhost:2015/" subdomains="true"/>
     <content src="index.html" />
     <preference name="Fullscreen" value="true" />

@@ -254,7 +254,7 @@
         //function callback(data) {
         //    alert(data);
         //}
-        var productServiceUrl = 'http://localhost:2015/EmployeeData.asmx?op=HelloWorld'; // Preferably write this out from server side
+        var productServiceUrl = 'https://'+document.domain+'/EmployeeData.asmx?op=HelloWorld'; // Preferably write this out from server side
 
         function beginSaveProduct() {
             var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
@@ -268,10 +268,10 @@
 
             $.ajax({
                 url: productServiceUrl,
-                //type: "POST",
+                type: "POST",
                 dataType: "xml",
                 data: xmlToSend,
-                async:true,
+                async:false,
                 complete: endSaveProduct,
                 crossDomain: true,
                 contentType: "text/xml; charset=utf-8",
@@ -290,6 +290,7 @@
             var handleStateChange = function () {
 
                 if (xmlHttpRequest.readyState == 4) {
+                    alert(xmlhttp.responseText);
                     if (xmlHttpRequest.status == 200) {
                                 alert('Response' + xmlhttp.responseText);
                                 alert(xmlhttp.status);
