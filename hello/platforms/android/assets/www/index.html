@@ -321,9 +321,9 @@
                     url: "http://localhost:2015/EmployeeData.asmx?op=HelloWorld",
                     data: xmlToSend, //{ "userName": "admin", "password": "admin01" },
                     contentType: "text/xml; charset=utf-8",
-                    dataType: "text",
+                    dataType: "xml",
                     success: function (data) {
-                        //$('.greeting-id').append(data.d);
+                        $('#greeting-id').append(data.d);
                         alert(data +"success");
                     },
                     failure: function (response) {
@@ -340,5 +340,6 @@
 </head>
 <body>
 <input id="btn" type="button" value="Hello" onclick="javasctipt: return CallService();"/>
+<div id="greeting-id">here</div>
 </body>
 </html>
