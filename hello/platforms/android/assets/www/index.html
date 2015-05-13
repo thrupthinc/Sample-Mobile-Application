@@ -324,23 +324,21 @@
                     processdata: false,
                     success: function (data) {
                         //$('.greeting-id').append(data.d);
-                        alert(data.d);
+                        alert(data.d +"success");
                     },
                     failure: function (response) {
-                        alert(response);
+                        alert(response+"failure");
                     }
                 });
             }
             catch (err) {
-                alert(err.message);
+                alert(err.message+ "exception");
             }
             return false;
         }
 </script>
 </head>
 <body>
-<input id="txtUser" type="text" />
-<input id="txtPwd" type="text" />
 <input id="btn" type="button" value="Login" onclick="javasctipt: return CallService();"/>
 </body>
 </html>
