@@ -317,7 +317,7 @@
                 Data = xmlToSend;
                 //alert(Data);
                 $.ajax({
-                    //type: "POST",
+                    type: "POST",
                     url: "http://localhost:2015/EmployeeData.asmx?op=HelloWorld",
                     data: Data, //{ "userName": "admin", "password": "admin01" },
                     contentType: "xml",
