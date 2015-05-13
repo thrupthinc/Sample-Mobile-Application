@@ -305,17 +305,17 @@
 
 
         function CallService() {
-            var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
-                    xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
-                    xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
-                    xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
-                    xmlToSend += '<soap:Body>';
-                    xmlToSend += '<HelloWorld xmlns="http://localhost/2015/MyMobApp" />';
-                    xmlToSend += '</soap:Body>';
-                    xmlToSend += '</soap:Envelope>';
             try {
                 //Data = xmlToSend;
                 //alert(Data);
+                var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
+                xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
+                xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
+                xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
+                xmlToSend += '<soap:Body>';
+                xmlToSend += '<HelloWorld xmlns="http://localhost/2015/MyMobApp" />';
+                xmlToSend += '</soap:Body>';
+                xmlToSend += '</soap:Envelope>';
                 $.ajax({
                     type: "POST",
                     url: "http://localhost:2015/EmployeeData.asmx?op=HelloWorld",
@@ -324,7 +324,7 @@
                     processdata: false,
                     success: function (data) {
                         //$('.greeting-id').append(data.d);
-                        alert(data.d +"success");
+                        alert(data +"success");
                     },
                     failure: function (response) {
                         alert(response+"failure");
