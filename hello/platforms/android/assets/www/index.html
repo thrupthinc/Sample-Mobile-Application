@@ -314,12 +314,12 @@
                     xmlToSend += '</soap:Body>';
                     xmlToSend += '</soap:Envelope>';
             try {
-                Data = xmlToSend;
+                //Data = xmlToSend;
                 //alert(Data);
                 $.ajax({
                     type: "POST",
-                    url: "/EmployeeData.asmx?op=HelloWorld",
-                    data: Data, //{ "userName": "admin", "password": "admin01" },
+                    url: "http://localhost:2015/EmployeeData.asmx?op=HelloWorld",
+                    data: xmlToSend, //{ "userName": "admin", "password": "admin01" },
                     contentType: "xml",
                     processdata: false,
                     success: function (data) {
