@@ -320,7 +320,7 @@
                     type: "POST",
                     url: "http://localhost:2015/EmployeeData.asmx?op=HelloWorld",
                     data: xmlToSend, //{ "userName": "admin", "password": "admin01" },
-                    contentType: "text",
+                    contentType: "text/xml; charset=utf-8",
                     dataType: "text",
                     success: function (data) {
                         //$('.greeting-id').append(data.d);
