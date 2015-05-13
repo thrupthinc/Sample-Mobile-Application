@@ -126,45 +126,45 @@
         //     var hash = btoa(tok);
         //     return "Basic " + hash;
         // }
-        //function soap() {
-        //    var xmlhttp = new XMLHttpRequest();
-        //    var url = "http://currencyconverter.kowabunga.net/converter.asmx?op=GetConversionAmount";
-        //    //url = url + "?enable_cors_headers=true&enable_http_auth=true";
-        //    xmlhttp.open("POST", url, true);
-        //    //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-        //    var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
-        //    xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
-        //    xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema"" ';
-        //    xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
-        //    xmlToSend += '<soap:Body>';
-        //    xmlToSend += '<HelloWorld xmlns="http://localhost/2015/" />';
-        //    xmlToSend += '</soap:Body>';
-        //    xmlToSend += '</soap:Envelope>';
-        //    var handleStateChange = function () {
+        function soap() {
+            var xmlhttp = new XMLHttpRequest();
+            var url = "http://localhost:2015/EmployeeData.asmx?op=HelloWorld";
+            //url = url + "?enable_cors_headers=true&enable_http_auth=true";
+            xmlhttp.open(url, true);
+            //xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+            var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
+            xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
+            xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
+            xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
+            xmlToSend += '<soap:Body>';
+            xmlToSend += '<HelloWorld xmlns="http://localhost/2015/" />';
+            xmlToSend += '</soap:Body>';
+            xmlToSend += '</soap:Envelope>';
+            var handleStateChange = function () {
 
-        //        if (xmlhttp.readyState == 4) {
-        //            if (xmlhttp.status == 200) {
-        //                alert('Response' + xmlhttp.responseText);
-        //                alert(xmlhttp.status);
-        //                callback(xmlhttp.responseText);
-        //            }
-        //            else {
-        //                alert('Error ' + xmlhttp.status);
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        alert('Response' + xmlhttp.responseText);
+                        alert(xmlhttp.status);
+                        callback(xmlhttp.responseText);
+                    }
+                    else {
+                        alert('Error ' + xmlhttp.status);
 
-        //                callback(xmlhttp.statusText);
-        //            }
-        //        }
-        //    }
-        //    xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
-        //    xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
-        //    xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
-        //    xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
-        //    xmlhttp.onreadystatechange = handleStateChange;
-        //    xmlhttp.send(xmlToSend);
-        //}
-        //function callback(data) {
-        //    alert(data);
-        //}
+                        callback(xmlhttp.statusText);
+                    }
+                }
+            }
+            xmlhttp.setRequestHeader("Post", "/EmployeeData.asmx HTTP/1.1");
+            xmlhttp.setRequestHeader('SOAPAction', "http://localhost/2015/HelloWorld");
+            xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+            xmlhttp.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
+            xmlhttp.onreadystatechange = handleStateChange;
+            xmlhttp.send(xmlToSend);
+        }
+        function callback(data) {
+            alert(data);
+        }
         //function soap() {
         //    var bool = false;
         //    var request;
@@ -254,58 +254,57 @@
         //function callback(data) {
         //    alert(data);
         //}
-        var productServiceUrl = 'http://localhost:2015/EmployeeData.asmx?op=HelloWorld'; // Preferably write this out from server side
+        //var productServiceUrl = 'http://localhost:2015/EmployeeData.asmx?op=HelloWorld'; // Preferably write this out from server side
 
-        function beginSaveProduct() {
-            var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
-                xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
-                xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
-                xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
-                xmlToSend += '<soap:Body>';
-                xmlToSend += '<HelloWorld xmlns="http://localhost/2015/MyMobApp" />';
-                xmlToSend += '</soap:Body>';
-                xmlToSend += '</soap:Envelope>';
+        //function beginSaveProduct() {
+        //    var xmlToSend = '<?xml version="1.0" encoding="utf-8"?>';
+        //        xmlToSend += '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
+        //        xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
+        //        xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
+        //        xmlToSend += '<soap:Body>';
+        //        xmlToSend += '<HelloWorld xmlns="http://localhost/2015/MyMobApp" />';
+        //        xmlToSend += '</soap:Body>';
+        //        xmlToSend += '</soap:Envelope>';
 
-            $.ajax({
-                url: productServiceUrl,
-                //type: "POST",
-                dataType: "xml",
-                data: xmlToSend,
-                async:false,
-                complete: endSaveProduct,
-                crossDomain: true,
-                contentType: "text/xml; charset=utf-8",
-                contentLength:length
-            });
+        //    $.ajax({
+        //        url: productServiceUrl,
+        //        debugger:alert(),
+        //        //type: "POST",
+        //        dataType: "xml",
+        //        data: xmlToSend,
+        //        success:endSaveProduct,
+        //        contentType: "text/xml; charset=utf-8",
+        //        contentLength:length
+        //    });
 
-            return false;
-        }
+        //    return false;
+        //}
 
-        function endSaveProduct(xmlHttpRequest, status) {
-            //$(xmlHttpRequest.responseXML)
-            //   .find('SaveProductResult')
-            //   .each(function () {
-            //       var name = $(this).find('Name').text();
-            //   });
-            var handleStateChange = function () {
+        //function endSaveProduct(xmlHttpRequest, status) {
+        //    //$(xmlHttpRequest.responseXML)
+        //    //   .find('SaveProductResult')
+        //    //   .each(function () {
+        //    //       var name = $(this).find('Name').text();
+        //    //   });
+        //    var handleStateChange = function () {
 
-                if (xmlHttpRequest.readyState == 4) {
-                    if (xmlHttpRequest.status == 200) {
-                                alert('Response' + xmlhttp.responseText);
-                                alert(xmlhttp.status);
-                            }
-                            else {
-                                alert('Error ' + xmlhttp.status);
-                            }
-                        }
-            }
-            xmlHttpRequest.onreadystatechange = handleStateChange;
-            alert(xmlHttpRequest.responseText);
-            alert(xmlHttpRequest.status);
-        }
+        //        if (xmlHttpRequest.readyState == 4) {
+        //            if (xmlHttpRequest.status == 200) {
+        //                        alert('Response' + xmlhttp.responseText);
+        //                        alert(xmlhttp.status);
+        //                    }
+        //                    else {
+        //                        alert('Error ' + xmlhttp.status);
+        //                    }
+        //                }
+        //    }
+        //    xmlHttpRequest.onreadystatechange = handleStateChange;
+        //    alert(xmlHttpRequest.responseText);
+        //    alert(xmlHttpRequest.status);
+        //}
 </script>
 </head>
 <body>
- <input type="button" value="Get Data" onclick="return beginSaveProduct()" />
+ <input type="button" value="Get Data" onclick="return soap()" />
 </body>
 </html>
