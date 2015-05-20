@@ -310,7 +310,7 @@
             xmlToSend += 'xmlns:xsd="http://www.w3.org/2001/XMLSchema" ';
             xmlToSend += 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">';
             xmlToSend += '<soap:Body>';
-            xmlToSend += '<HelloWorld xmlns="http://localhost/2015/MyMobApp" />';
+            xmlToSend += '<HelloWorld xmlns="http://localhost/2015/" />';
             xmlToSend += '<name>'+helloooooooo+'</name>';
             xmlToSend += '</soap:Body>';
             xmlToSend += '</soap:Envelope>';
@@ -321,7 +321,7 @@
                     method: "POST",
                     url: "http://localhost:2015/EmployeeData.asmx?op=HelloWorld",
                     data: xmlToSend, //{ "userName": "admin", "password": "admin01" },
-                    contentType: "text/xml; charset=utf-8",
+                    contentType: "text; charset=utf-8",
                     dataType: "text",
                     success: function (data) {
                         $('#greeting-id').append(data.d);
